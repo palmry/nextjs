@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="Group_85" data-name="Group 85" transform="translate(-747 -542)">
+        <path id="Rectangle_460" d="M0 0h16v16H0z" class="cls-1" data-name="Rectangle 460" transform="translate(747 542)"/>
+        <path id="Checkbox" d="M6.345 11.034L0 4.69 1.287 3.4l5.058 4.968L14.713 0 16 1.287z" class="cls-2" transform="translate(747 545)"/>
+    </g>
+</svg>

@@ -1,0 +1,7 @@
+{
+  "name": "prebid-config",
+  "version": "1.0.0",
+  "description": "Prebid.js bidder config",
+  "author": "Jordan Wambaugh <jordan.wambaugh@wildskymedia.com>",
+  "main": "index.js"
+}

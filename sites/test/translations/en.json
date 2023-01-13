@@ -1,0 +1,174 @@
+{
+  "author": {
+    "followMe": "Follow Me",
+    "viewAllContributors": "VIEW ALL CONTRIBUTORS"
+  },
+  "postPage": {
+    "mostPopular": "Most Popular",
+    "recommended": "Recommended",
+    "moreFromSeries": "More from this series",
+    "seeThisSeries": "SEE THIS SERIES"
+  },
+  "postGallery": {
+    "shop": "SHOP",
+    "from": "from",
+    "singlePrice": "$<%=price%>",
+    "startingPrice": "Starting from $<%=price%>",
+    "rangingPrice": "From $<%=price%> to $<%=priceRange%>",
+    "varies": "Price may vary"
+  },
+  "disclaimer": {
+    "generic": {
+      "details": "*Disclaimer: The advice on ",
+      "restDetails": " is not a substitute for consultation with a medical professional or treatment for a specific condition. You should not use this information to diagnose or treat a health problem without consulting a qualified professional. Please contact your health-care provider with questions and concerns."
+    },
+    "shoppable": {
+      "details": "*Psst: if you choose to purchase an item from this post, ",
+      "restDetails": " may receive a small cut. Each item and price is up to date at the time of publication; however, an item may be sold out or the price may be different at a later date."
+    },
+    "reddit": {
+      "details": "These stories are based on posts found on Reddit. Reddit is a user-generated social news aggregation, web content rating, and discussion website where registered members submit content to the site and can up- or down-vote the content. The accuracy and authenticity of each story cannot be confirmed by our staff."
+    }
+  },
+  "footer": {
+    "about": "ABOUT",
+    "contact": "CONTACT",
+    "terms": "TERMS",
+    "privacy": "PRIVACY",
+    "credit": "PART OF WILD SKY MEDIA",
+    "creditFamily": "FAMILY & PARENTING",
+    "privacySettings": "PRIVACY SETTINGS",
+    "missionStatement": "Share the LittleThings that spark joy"
+  },
+  "global": {
+    "by": "By",
+    "update": "Updated",
+    "publish": "Published",
+    "seeMore": "SEE MORE",
+    "viewMore": "VIEW MORE",
+    "viewLess": "VIEW LESS",
+    "followUs": "FOLLOW US",
+    "sponsorText": "Sponsored By",
+    "markdownText": "TWEET THIS",
+    "share": "SHARE",
+    "appDescription": "Stay connected to family and friends by sharing the LittleThings that spark joy.",
+    "monthNames": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ]
+  },
+  "feed": {
+    "title": "Family, Parenting, Pet and Lifestyle Tips That Bring Us Closer Together | LittleThings.com",
+    "buy": "<p>Buy this product, on <a href='<%=productLink%>'><%=storeName%></a> for $<%=price%></p>"
+  },
+  "aboutPage": {
+    "ourMission": "OUR MISSION",
+    "ourStory": "OUR STORY",
+    "meetOurTeam": "Meet Our Team",
+    "seeAllContributors": "SEE ALL CONTRIBUTORS"
+  },
+  "welcomeBanner": {
+    "bannerText1": "We are trying out a new look!",
+    "bannerText2": "If you miss the old site simply",
+    "goBack": "go back"
+  },
+  "notFound": {
+    "title": "WHOOPS!",
+    "description": "Sorry, we can’t find the page you’re looking for. Head over to our homepage and find another story to make you smile!"
+  },
+  "error": {
+    "title": "Uh-oh, an error has occurred!",
+    "description": "Don't worry, we're working to fix the problem, and should be back soon."
+  },
+  "Webinar": {
+    "date": "Date",
+    "registerNow": "Register Now",
+    "speakers": "Host",
+    "schedule": "Schedule",
+    "swagBags": "Swag Bags",
+    "giveAways": "Giveaways",
+    "relatedArticles": "Related Articles",
+    "share": "Share",
+    "pastWebinars": "Past Webinars",
+    "monthNames": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "label": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "parentalStatus": "What is your parental status?",
+      "dueDate": "If you are pregnant, when is your due date?",
+      "birthdate": "What is your birth date?",
+      "zipcode": "What is your zip code?",
+      "preferredLanguage": "What language do you prefer?"
+    },
+    "placeHolder": {
+      "firstName": "Your first name",
+      "lastName": "Your last name",
+      "email": "name@domain.com",
+      "parentalStatus": "Choose one",
+      "dueDate": "MM/DD/YYYY",
+      "birthdate": "MM/DD/YYYY",
+      "zipcode": "e.g. 10012",
+      "preferredLanguage": "Choose one"
+    },
+    "optionLabel": {
+      "parentalStatus": {
+        "kidsInHousehold": "Kids in household",
+        "tryingToConceive": "Trying to conceive",
+        "pregnancy": "Pregnant",
+        "noneOfTheAbove": "None of the above"
+      },
+      "preferredLanguage": {
+        "es": "Spanish",
+        "en": "English",
+        "bi": "Bilingual"
+      }
+    },
+    "error": {
+      "firstNameEmpty": "Please type your first name.",
+      "lastNameEmpty": "Please type your last name.",
+      "emailInvalid": "Please enter a valid email address.",
+      "parentalStatusNotSelect": "Please choose a valid parental status.",
+      "dueDateEmpty": "Please choose your due date.",
+      "dueDateInvalidRange": "Please choose a valid due date.",
+      "birthDateEmpty": "Please choose your birth date.",
+      "belowExpectedAge": "It seems you are a minor, please come back and visit us when you are over 18.",
+      "zipCodeEmpty": "Please type your zip code.",
+      "zipCodeInvalid": "Please enter a valid US zip code.",
+      "preferredLanguageNotSelect": "Please select a language."
+    },
+    "submitButton": "Register Now",
+    "rsvpForm": {
+      "loading": "Loading...",
+      "thankyou": "Thank you for registering!",
+      "success1": "Please check your email for confirmation and ",
+      "success2": " this event with your friends!",
+      "share": "SHARE",
+      "fail1": "Apologies, something has gone wrong.",
+      "fail2": "Please refresh and re-submit your registration."
+    }
+  }
+}

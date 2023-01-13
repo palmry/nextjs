@@ -1,0 +1,68 @@
+{
+  "external-player": {
+    "enabled": true,
+    "variants": {
+      "control": {
+        "weight": 0,
+        "metaData": null
+      },
+      "connatix": {
+        "weight": 100,
+        "metaData": {
+          "playerId": "1b4a69e1-8557-4d94-a55f-f2521b480bb7",
+          "scriptId": "54ced3da052942da9f2ab275485589c2"
+        }
+      }
+    }
+  },
+  "rev-content-sponsored": {
+    "enabled": true,
+    "variants": {
+      "control": {
+        "weight": 1,
+        "metaData": null
+      },
+      "disableSponsoredPosts": {
+        "weight": 1,
+        "metaData": null
+      }
+    }
+  },
+  "rev-content-subsequent-articles": {
+    "enabled": true,
+    "variants": {
+      "control": {
+        "weight": 1,
+        "metaData": null
+      },
+      "showRevC": {
+        "weight": 1,
+        "metaData": {
+          "subsequent": {
+            "widgetId": "217693"
+          }
+        }
+      }
+    }
+  },
+  "rev-content-first-articles": {
+    "enabled": true,
+    "variants": {
+      "control": {
+        "weight": 1,
+        "metaData": null
+      },
+      "showRevC": {
+        "weight": 1,
+        "metaData": {
+          "first": {
+            "widgetId": "217692"
+          },
+          "second": {
+            "widgetId": "217694"
+          }
+        }
+      }
+    }
+  }
+}

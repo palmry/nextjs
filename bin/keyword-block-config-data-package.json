@@ -1,0 +1,7 @@
+{
+  "name": "keyword-block-config",
+  "version": "1.0.0",
+  "description": "Keyword blocking config",
+  "author": "Jordan Wambaugh <jordan.wambaugh@wildskymedia.com>",
+  "main": "index.js"
+}

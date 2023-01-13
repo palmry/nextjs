@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarkdownInjector can inject any components to markdown 1`] = `
+<div>
+  <div
+    class="ContentMarkdown__ScHTMLContent-sc-1qkx5c8-0 dtgUXI"
+  >
+    <p>
+      <strong>
+        1st paragraph starts
+      </strong>
+      <a
+        href="https://www.wayfair.com/daily-sales/way-day"
+        rel="noopener"
+        target="_blank"
+      >
+        Wayfair's "Way Day" sale
+      </a>
+       totally beats them all
+    </p>
+  </div>
+  <button
+    class="ButtonAction__Button-pe4a18-0 jiiVhH buttonAction"
+  >
+    OK
+  </button>
+  <div
+    class="ContentMarkdown__ScHTMLContent-sc-1qkx5c8-0 dtgUXI"
+  >
+    <p>
+      <strong>
+        2nd paragraph starts
+      </strong>
+    </p>
+  </div>
+</div>
+`;
+
+exports[`processMarkdown function can inject any components to markdown 1`] = `
+Array [
+  MarkdownPlaceholder {
+    "key": 0,
+    "markdown": "**1st paragraph starts**[Wayfair's \\"Way Day\\" sale](https://www.wayfair.com/daily-sales/way-day) totally beats them all
+
+",
+  },
+  <React.Fragment>
+    <ButtonAction
+      text="OK"
+    />
+  </React.Fragment>,
+  MarkdownPlaceholder {
+    "key": 2,
+    "markdown": "**2nd paragraph starts**
+",
+  },
+]
+`;

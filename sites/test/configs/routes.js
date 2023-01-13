@@ -1,0 +1,95 @@
+module.exports = {
+  homepage: {
+    path: '/',
+    isStatic: true,
+    includeInSitemap: true,
+    changefreq: 'daily',
+  },
+  tag: {
+    path: '/tag/:tagName',
+    pathResolver: tagName => `/tag/${encodeURIComponent(tagName)}`,
+    isStatic: false,
+    includeInSitemap: true,
+    changefreq: null,
+  },
+  contentIndex: {
+    path: '/p/:page',
+    pathResolver: slug => `/p/${slug}`,
+    isStatic: false,
+    includeInSitemap: true,
+    changefreq: null,
+  },
+  series: {
+    path: '/series/:slug',
+    pathResolver: slug => `/series/${slug}`,
+    isStatic: false,
+    includeInSitemap: true,
+    changefreq: 'daily',
+  },
+  authorIndex: {
+    path: '/author',
+    isStatic: true,
+    includeInSitemap: true,
+    changefreq: null,
+  },
+  author: {
+    path: '/author/:slug',
+    pathResolver: slug => `/author/${slug}`,
+    isStatic: false,
+    includeInSitemap: true,
+    changefreq: 'daily',
+  },
+  category: {
+    path: '/:categorySlug',
+    pathResolver: categorySlug => `/${categorySlug}`,
+    isStatic: false,
+    includeInSitemap: true,
+    changefreq: 'daily',
+  },
+  about: {
+    path: '/about',
+    isStatic: true,
+    includeInSitemap: true,
+    changefreq: null,
+  },
+  newsletter: {
+    path: '/newsletter',
+    isStatic: true,
+    includeInSitemap: true,
+    changefreq: null,
+  },
+  notFound: {
+    path: '/404',
+    isStatic: true,
+    includeInSitemap: false,
+    changefreq: null,
+  },
+  error: {
+    path: '/error',
+    isStatic: true,
+    includeInSitemap: false,
+    changefreq: null,
+  },
+  contact: {
+    path: '/contact',
+    isStatic: true,
+    includeInSitemap: true,
+    changefreq: null,
+  },
+  webinar: {
+    path: '/event/:slug',
+    pathResolver: slug => `/event/${slug}`,
+    isStatic: false,
+    includeInSitemap: true,
+    changefreq: null,
+  },
+  // route to post should place at last
+  // to make function routeNameFromPath work properly
+  post: {
+    path: '/:categorySlug/:slug/:slideSlug?',
+    pathResolver: (categorySlug, slug) => `/${categorySlug}/${slug}`,
+    isStatic: false,
+    includeInSitemap: true,
+    changefreq: null,
+  },
+}

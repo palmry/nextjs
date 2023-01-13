@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentMarkdown can render contentful markdown 1`] = `
+<div
+  class="ContentMarkdown__ScHTMLContent-sc-1qkx5c8-0 dtgUXI"
+>
+  <p>
+    <a
+      href="https://www.wayfair.com/daily-sales/way-day"
+      rel="noopener"
+      target="_blank"
+    >
+      Wayfair's "Way Day" sale
+    </a>
+     totally beats them all 
+    <script
+      src="test.js"
+    />
+  </p>
+</div>
+`;

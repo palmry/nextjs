@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fontFace should create font styles 1`] = `
+Array [
+  "
+    ",
+  "
+    @font-face {
+      font-family: 'Avenir Next LT Pro';
+      src: url(AvenirNextLTPro-Bold.otf) format('opentype');
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'Avenir Next LT Pro';
+      src: url(AvenirNextLTPro-It.otf) format('opentype');
+      font-weight: bold;
+      font-style: italic;
+      font-display: swap;
+    }
+    ",
+  "
+  ",
+]
+`;

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Instagram-White-Silhoutte" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <style>
+            .cls-1{fill:#fff}
+        </style>
+    </defs>
+    <g id="Capa_1" data-name="Capa 1">
+        <path id="Path_2719" d="M21.721 0H8.279A8.288 8.288 0 0 0 0 8.279v13.442A8.288 8.288 0 0 0 8.279 30h13.442A8.288 8.288 0 0 0 30 21.721V8.279A8.288 8.288 0 0 0 21.721 0zm5.617 21.721a5.624 5.624 0 0 1-5.617 5.617H8.279a5.624 5.624 0 0 1-5.617-5.617V8.279a5.624 5.624 0 0 1 5.617-5.617h13.442a5.624 5.624 0 0 1 5.617 5.617z" class="cls-1" data-name="Path 2719"/>
+        <path id="Path_2720" d="M80.62 72.7a7.92 7.92 0 1 0 7.92 7.92 7.92 7.92 0 0 0-7.92-7.92zm0 13.115a5.193 5.193 0 1 1 5.193-5.195 5.193 5.193 0 0 1-5.193 5.195z" class="cls-1" data-name="Path 2720" transform="translate(-65.62 -65.62)"/>
+        <path id="Path_2721" d="M212.936 50.13a1.9 1.9 0 1 0 1.345.557 1.9 1.9 0 0 0-1.345-.557z" class="cls-1" data-name="Path 2721" transform="translate(-189.851 -45.097)"/>
+    </g>
+</svg>
