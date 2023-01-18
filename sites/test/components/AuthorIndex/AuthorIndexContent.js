@@ -1,11 +1,11 @@
-import React from "react"
-import Link from "wsc/components/Link"
-import marked from "marked"
-import { markedLink } from "wsc/utils/redirect"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { ReactComponent as Right } from "../../statics/images/icon-nav-left.svg"
-import { withLineClamp, COLORS, MEDIA, FONT_FAMILIES } from "../../utils/styles"
+import React from 'react'
+import Link from 'wsc/components/Link'
+import marked from 'marked'
+import { markedLink } from 'wsc/utils/redirect'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import Right from '../../statics/images/icon-nav-left.svg'
+import { withLineClamp, COLORS, MEDIA, FONT_FAMILIES } from '../../utils/styles'
 
 const contextline = {
   mobileLines: 2,
@@ -78,7 +78,7 @@ const AuthorIndexContent = ({
 }) => {
   return (
     <ScWrapper>
-      {authorTitle ? <ContentText>{authorTitle}</ContentText> : ""}
+      {authorTitle ? <ContentText>{authorTitle}</ContentText> : ''}
       <Toggle
         withDefaultStyle={false}
         to={to}

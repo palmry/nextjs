@@ -1,10 +1,10 @@
-import React from "react"
-import styled from "styled-components"
-import PropTypes from "prop-types"
-import { useTranslator } from "../../hooks/useTranslator"
-import { DefaultButton } from "./DefaultButton"
-import { ReactComponent as IconNavLeft } from "../../statics/images/icon-nav-left.svg"
-import { withButton, MEDIA } from "../../utils/styles"
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { useTranslator } from '../../hooks/useTranslator'
+import { DefaultButton } from './DefaultButton'
+import IconNavLeft from '../../statics/images/icon-nav-left.svg'
+import { withButton, MEDIA } from '../../utils/styles'
 
 const ScImageBox = styled.div`
   display: inline;
@@ -18,8 +18,8 @@ const ScSeeMoreButton = styled(({ isOutlined, ...restProps }) => (
 )).attrs({
   className: (props) =>
     props.isOutlined
-      ? "font-button withButtonOutlined"
-      : "font-button withButtonLight",
+      ? 'font-button withButtonOutlined'
+      : 'font-button withButtonLight',
 })`
   && {
     font-weight: 500;
@@ -41,7 +41,7 @@ const ScSeeMoreButton = styled(({ isOutlined, ...restProps }) => (
  *  RENDER PHASE
  *---------------------------------------------------------------------------------*/
 
-const SPACING = "0.38rem"
+const SPACING = '0.38rem'
 
 const SeeMoreButton = ({
   url,
@@ -77,7 +77,7 @@ SeeMoreButton.propTypes = {
   isOutlined: PropTypes.bool,
 }
 SeeMoreButton.defaultProps = {
-  prefixTitle: "global.seeMore",
+  prefixTitle: 'global.seeMore',
   prefixImageComponent: null,
   suffixImageComponent: <IconNavLeft />,
   isOutlined: false,

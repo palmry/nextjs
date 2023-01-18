@@ -16,7 +16,7 @@ import { useTranslator } from '../../hooks/useTranslator'
 import { getDocumentHeadKey } from 'wsc/utils/common'
 import ResponsiveImage from '../ResponsiveImage'
 
-import { ReactComponent as messengerButton } from '../../statics/images/icon-messenger.svg'
+import messengerButton from '../../statics/images/icon-messenger.svg'
 import PINK_HEART from 'wsc/statics/images/valentine/pink-heart.png'
 import WHITE_HEART from 'wsc/statics/images/valentine/white-heart.png'
 import PRINTABLE_VALENTINE from 'wsc/statics/images/valentine/printable-valentine.png'
@@ -220,7 +220,7 @@ const ScMessengerButton = styled(messengerButton)`
 const renderer = new marked.Renderer()
 renderer.link = markedLink
 
-const messengerClick = locale => {
+const messengerClick = (locale) => {
   const urlParams = new URLSearchParams(window.location.search)
   urlParams.set('language', locale)
   const shareURL = `${window.location.origin}${window.location.pathname}?${urlParams}`
@@ -254,13 +254,15 @@ const ValentinePage = ({ webinar }) => {
               <ScWhiteHeartHeaderImage src={WHITE_HEART} />
               <ScPinkHeartHeaderImage src={PINK_HEART} />
             </ScBgWrapper>
-            <ScLogo src={webinar.logo.url} alt="" />
+            <ScLogo src={webinar.logo.url} alt='' />
             <ScName>{webinar.name}</ScName>
           </ScHeader>
           <ScSection>
             <ScDescription>
               <div
-                dangerouslySetInnerHTML={{ __html: marked(webinar.description, { renderer }) }}
+                dangerouslySetInnerHTML={{
+                  __html: marked(webinar.description, { renderer }),
+                }}
               />
             </ScDescription>
             <ScRegisterButton

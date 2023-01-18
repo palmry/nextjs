@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { ReactComponent as SPLASH_DOT } from '../statics/images/splash-dot.svg'
+import SPLASH_DOT from '../statics/images/splash-dot.svg'
 
 /*----------------------------------------------------------------------------------
  *  RENDER PHASE
@@ -21,7 +21,7 @@ const Splashing = ({
   const bezier = '0, 1, 0.5, 0.95'
   const degree = rotate - 160 || Math.floor(Math.random() * (360 - 0 + 1)) + 0
   const Splash = styled(SPLASH_DOT)`
-    ${props => `fill: ${props.color};`}
+    ${(props) => `fill: ${props.color};`}
     transform: rotate(${degree}deg);
     position: absolute;
     width: ${splashSize}px;

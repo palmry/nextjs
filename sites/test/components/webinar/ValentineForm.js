@@ -25,8 +25,8 @@ import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider
 import { webShareAPI } from 'wsc/utils/socialShare'
 import { useTranslator } from '../../hooks/useTranslator'
 import { sendGaEvent, parentalStatusVariable } from 'wsc/utils/googleTagManager'
-import { ReactComponent as messengerButton } from '../../statics/images/icon-messenger.svg'
-import { ReactComponent as shareButton } from '../../statics/images/icon-share.svg'
+import messengerButton from '../../statics/images/icon-messenger.svg'
+import shareButton from '../../statics/images/icon-share.svg'
 import HEART_BOOK from 'wsc/statics/images/valentine/heart-book.png'
 
 const ScWrapper = styled.div`
@@ -235,7 +235,7 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
     dueDate: '',
   }
 
-  const valentineFormValidator = values => {
+  const valentineFormValidator = (values) => {
     //site can pass in custom error message to replace default error message
     let errors = {}
     if (!isValidEmail(values.email)) {
@@ -245,7 +245,8 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
       if (!isValidUsDateFormat(values.birthDate)) {
         errors.birthDate = 'Please enter a valid date format "MM/DD/YYYY".'
       } else if (!isAgeMoreThan(values.birthDate, 18)) {
-        errors.birthDate = 'You are underage, please come visit us once you are 18.'
+        errors.birthDate =
+          'You are underage, please come visit us once you are 18.'
       }
     }
     if (isEmpty(values.parentalStatus)) {
@@ -271,7 +272,7 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
     return errors
   }
 
-  const signupSuccess = values => {
+  const signupSuccess = (values) => {
     sendGaEvent({
       eventName: 'newsletterSubscribe',
       formType: 'event',
@@ -282,13 +283,15 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
     RSVPRef.current.scrollIntoView({ block: 'center' })
   }
 
-  const signupError = error => {
-    console.error(error?.response?.data?.message || error?.message || `${error}`)
+  const signupError = (error) => {
+    console.error(
+      error?.response?.data?.message || error?.message || `${error}`
+    )
     setIsSuccess(false)
     RSVPRef.current.scrollIntoView({ block: 'center' })
   }
 
-  const ResponseComponent = isSuccess => {
+  const ResponseComponent = (isSuccess) => {
     return isSuccess === undefined ? (
       <ScResponseWrapper>
         <ScResponseText>Loading...</ScResponseText>
@@ -351,16 +354,20 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
           <Formik
             initialValues={rsvpValues}
             validate={valentineFormValidator}
-            onSubmit={async values => {
+            onSubmit={async (values) => {
               setSubmitted(true)
               RSVPRef.current.scrollIntoView({ block: 'center' })
 
               // send data to GetResponse
               const email = values.email
-              const pregnancyWeek = values.dueDate && calculatePregnancyWeek(values.dueDate)
+              const pregnancyWeek =
+                values.dueDate && calculatePregnancyWeek(values.dueDate)
               const dayOfCycle = '0'
               const customFields = [
-                createCustomFieldObject('parental_status_checkboxes', values.parentalStatus),
+                createCustomFieldObject(
+                  'parental_status_checkboxes',
+                  values.parentalStatus
+                ),
                 createCustomFieldObject('due_date', values.dueDate),
                 createCustomFieldObject('pregnancy_week', pregnancyWeek),
                 createCustomFieldObject('birthdate', values.birthDate),
@@ -416,12 +423,12 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
                 <form onSubmit={handleSubmit}>
                   <ScLabel>Email*</ScLabel>
                   <ScInputField
-                    type="email"
+                    type='email'
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
-                    name="email"
-                    placeholder="name@domain.com"
+                    name='email'
+                    placeholder='name@domain.com'
                     errMsg={errors.email}
                     touchState={
                       touched.email
@@ -433,13 +440,13 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
                   />
                   <ScLabel>Birthdate</ScLabel>
                   <ScInputField
-                    className="rsvp-birth-date"
-                    type="text"
+                    className='rsvp-birth-date'
+                    type='text'
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.birthDate}
-                    name="birthDate"
-                    placeholder="MM/DD/YYYY"
+                    name='birthDate'
+                    placeholder='MM/DD/YYYY'
                     errMsg={errors.birthDate}
                     touchState={
                       touched.birthDate
@@ -451,7 +458,7 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
                   />
                   <ScLabel>Parental Status*</ScLabel>
                   <ScCheckbox
-                    className="parental-status-valentine"
+                    className='parental-status-valentine'
                     items={[
                       'Trying to Conceive',
                       'Pregnant',
@@ -462,10 +469,10 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
                       'Teen (13-17)',
                       'None of the Above',
                     ]}
-                    name="parentalStatus"
+                    name='parentalStatus'
                     errMsg={errors.parentalStatus}
                     setFieldValue={setFieldValue}
-                    onChangeFunction={e => {
+                    onChangeFunction={(e) => {
                       const { value } = e.target
 
                       // Clear value of dueDate is 'Pregnant' is not selected
@@ -473,20 +480,24 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
                         values.dueDate = ''
                       }
                     }}
-                    MenuProps={{ classes: { paper: 'MuiPaper-root-parentalStatusValentine' } }}
+                    MenuProps={{
+                      classes: {
+                        paper: 'MuiPaper-root-parentalStatusValentine',
+                      },
+                    }}
                   />
 
                   {values.parentalStatus.includes('Pregnant') && (
                     <>
                       <ScLabel>Due Date*</ScLabel>
                       <ScInputField
-                        className="rsvp-due-date"
-                        type="text"
+                        className='rsvp-due-date'
+                        type='text'
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.dueDate}
-                        name="dueDate"
-                        placeholder="MM/DD/YYYY"
+                        name='dueDate'
+                        placeholder='MM/DD/YYYY'
                         errMsg={errors.dueDate}
                         touchState={
                           touched.dueDate
@@ -498,7 +509,7 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
                       />
                     </>
                   )}
-                  <ScSubmitButton type="submit" disabled={!isValid}>
+                  <ScSubmitButton type='submit' disabled={!isValid}>
                     SEND ME MY VALENTINES
                   </ScSubmitButton>
                 </form>
@@ -507,10 +518,16 @@ const ValentineForm = ({ shareRef, RSVPRef, messengerClick, title }) => {
           />
           <ScPrivacy>
             {'By submitting this form, I agree to the '}
-            <ScLink to={'https://www.wildskymedia.com/privacy-policy/'}>{'Privacy Policy'}</ScLink>
+            <ScLink to={'https://www.wildskymedia.com/privacy-policy/'}>
+              {'Privacy Policy'}
+            </ScLink>
             {', the '}
-            <ScLink to={'https://www.wildskymedia.com/terms-of-service/'}>{'Terms of Use'}</ScLink>
-            {', and to personalized promotions from our partners based on the data submitted.'}
+            <ScLink to={'https://www.wildskymedia.com/terms-of-service/'}>
+              {'Terms of Use'}
+            </ScLink>
+            {
+              ', and to personalized promotions from our partners based on the data submitted.'
+            }
           </ScPrivacy>
         </ScFlexWrapper>
       )}

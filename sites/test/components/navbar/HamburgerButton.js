@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { ScIconButton, menuBarTransitionStyle } from './sharedStyles'
-import { ReactComponent as IconMenu } from '../../statics/images/icon-menu.svg'
-import { ReactComponent as IconNavClose } from '../../statics/images/icon-nav-close.svg'
+import IconMenu from '../../statics/images/icon-menu.svg'
+import IconNavClose from '../../statics/images/icon-nav-close.svg'
 
 const ScMenuButton = styled(({ isOpen, styleState, ...restProps }) => (
   <ScIconButton {...restProps} />
@@ -30,7 +30,8 @@ const ScMenuButton = styled(({ isOpen, styleState, ...restProps }) => (
       // cross fading image animation
       ${ScIconMenu} {
         opacity: ${!isOpen ? 1 : 0};
-        -webkit-transition: opacity ${opacityDuration} ${iconMenuAnimationTimeout},
+        -webkit-transition: opacity ${opacityDuration}
+            ${iconMenuAnimationTimeout},
           -webkit-transform ${rotateDuration} ${iconMenuAnimationTimeout};
         -webkit-transform: rotate(${!isOpen ? 0 : rotateDegree}deg);
         transition: opacity ${opacityDuration} ${iconMenuAnimationTimeout},
@@ -40,7 +41,8 @@ const ScMenuButton = styled(({ isOpen, styleState, ...restProps }) => (
       ${ScIconNavClose} {
         opacity: ${isOpen ? 1 : 0};
         -webkit-transform: rotate(${isOpen ? 0 : rotateDegree}deg);
-        -webkit-transition: opacity ${opacityDuration} ${iconCloseAnimationTimeout},
+        -webkit-transition: opacity ${opacityDuration}
+            ${iconCloseAnimationTimeout},
           -webkit-transform ${rotateDuration} ${iconCloseAnimationTimeout};
         transition: opacity ${opacityDuration} ${iconCloseAnimationTimeout},
           transform ${rotateDuration} ${iconCloseAnimationTimeout};
@@ -49,8 +51,8 @@ const ScMenuButton = styled(({ isOpen, styleState, ...restProps }) => (
     `
   }}
 `
-const ScIconMenu = styled(IconMenu)``
-const ScIconNavClose = styled(IconNavClose)`
+const ScIconMenu = styled((props) => <IconMenu {...restProps} />)``
+const ScIconNavClose = styled((props) => <IconNavClose {...restProps} />)`
   position: absolute;
 `
 
@@ -58,10 +60,10 @@ const ScIconNavClose = styled(IconNavClose)`
  *  RENDER PHASE
  *---------------------------------------------------------------------------------*/
 
-const HamburgerButton = props => {
+const HamburgerButton = (props) => {
   return (
     <ScMenuButton
-      color="inherit"
+      color='inherit'
       onClick={props.onClickMobileMenuButton}
       isOpen={props.isOpenMobileMenu}
       styleState={props.styleState}

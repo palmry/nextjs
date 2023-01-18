@@ -14,7 +14,7 @@ import { facebookSend } from 'wsc/utils/socialShare'
 import AdProviderWrapper from '../AdProviderWrapper'
 import AdFooter from 'wsc/components/AdFooter'
 
-import { ReactComponent as messengerButton } from 'wsc/statics/images/icon-messenger.svg'
+import messengerButton } from 'wsc/statics/images/icon-messenger.svg'
 import ICON_1 from 'wsc/statics/images/halloween/icon1.svg'
 import ICON_2 from 'wsc/statics/images/halloween/icon2.svg'
 import ICON_3 from 'wsc/statics/images/halloween/icon3.svg'

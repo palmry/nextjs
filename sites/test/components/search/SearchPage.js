@@ -13,7 +13,7 @@ import FancyHeader from '../FancyHeader'
 import PostItemLayout, { generatePostDataProps } from '../PostItemLayout'
 
 import LINE_PINK from '../../statics/images/line-pink.svg'
-import { ReactComponent as IconNavLeft } from '../../statics/images/icon-nav-left.svg'
+import IconNavLeft from '../../statics/images/icon-nav-left.svg'
 
 import { MEDIA, POST_ITEM_IMAGE_TYPE, COLORS } from '../../utils/styles'
 import { numberFormat } from 'wsc/utils/number'
@@ -66,7 +66,8 @@ const POST_ITEM_LAYOUT = {
 const EmptyStateBox = () => (
   <ScEmptyStateBox>
     <div>
-      Sorry, we were unable to find a match. Please try another keyword or explore our homepage.
+      Sorry, we were unable to find a match. Please try another keyword or
+      explore our homepage.
     </div>
     <Link to={routes.homepage.path} withDefaultStyle={false}>
       <ScHomeButton>
@@ -92,18 +93,22 @@ const SearchPage = ({ posts, keyword, total }) => {
           withCenterLayout={false}
           underlineImage={LINE_PINK}
           isUnderlineImageCenterAlign={false}
-          titleHtmlTag="h1"
+          titleHtmlTag='h1'
           withTextTransform={'unset'}
         />
         {!isEmpty(posts) ? (
           <ScGridList column={1} columnGap={columnGap} rowGap={rowGap}>
-            {posts.map(post => (
+            {posts.map((post) => (
               <article key={`post-${post.slug}`}>
                 <PostItemLayout
                   {...generatePostDataProps(post)}
                   // styling
                   titleHtmlTag={isDesktop ? 'h2' : 'h3'}
-                  titleLines={{ mobileLines: 3, tabletLines: 4, desktopLines: 4 }}
+                  titleLines={{
+                    mobileLines: 3,
+                    tabletLines: 4,
+                    desktopLines: 4,
+                  }}
                   // layout
                   imageResponsiveConfigs={POST_ITEM_LAYOUT}
                 />

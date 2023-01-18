@@ -21,13 +21,13 @@ import AdFooter from 'wsc/components/AdFooter'
 import { useTranslator } from '../../hooks/useTranslator'
 import { getDocumentHeadKey } from 'wsc/utils/common'
 
-import { ReactComponent as messengerButton } from '../../statics/images/icon-messenger.svg'
-import { ReactComponent as hostIcon } from '../../statics/images/webinar/icon-host.svg'
-import { ReactComponent as lineIcon } from '../../statics/images/webinar/icon-line.svg'
-import { ReactComponent as giveawaysIcon } from '../../statics/images/webinar/icon-giveaways.svg'
-import { ReactComponent as relatedArticlesIcon } from '../../statics/images/webinar/icon-related-articles.svg'
-import { ReactComponent as snowflake } from '../../statics/images/webinar/icon-snowflake.svg'
-import { ReactComponent as branch } from '../../statics/images/webinar/icon-branch.svg'
+import messengerButton from '../../statics/images/icon-messenger.svg'
+import hostIcon from '../../statics/images/webinar/icon-host.svg'
+import lineIcon from '../../statics/images/webinar/icon-line.svg'
+import giveawaysIcon from '../../statics/images/webinar/icon-giveaways.svg'
+import relatedArticlesIcon from '../../statics/images/webinar/icon-related-articles.svg'
+import snowflake from '../../statics/images/webinar/icon-snowflake.svg'
+import branch from '../../statics/images/webinar/icon-branch.svg'
 
 const ScFlexWrapper = styled.div`
   display: flex;
@@ -293,7 +293,7 @@ const ScMessengerButton = styled(messengerButton)`
 const renderer = new marked.Renderer()
 renderer.link = markedLink
 
-const messengerClick = locale => {
+const messengerClick = (locale) => {
   const urlParams = new URLSearchParams(window.location.search)
   urlParams.set('language', locale)
   const shareURL = `${window.location.origin}${window.location.pathname}?${urlParams}`
@@ -307,11 +307,14 @@ const WebinarPage = ({ webinar }) => {
   const { translator, locale } = useTranslator()
 
   dateformat.i18n.monthNames = translator('Webinar.monthNames')
-  dateformat.masks.withOfMonth = locale === 'es' ? 'UTC:d "de" mmm, yyyy' : 'UTC:mmm dS, yyyy'
+  dateformat.masks.withOfMonth =
+    locale === 'es' ? 'UTC:d "de" mmm, yyyy' : 'UTC:mmm dS, yyyy'
 
   const date = dateformat(new Date(webinar.date), 'withOfMonth')
   const startTime = dateformat(new Date(webinar.date), 'UTC:h tt')
-  const endTime = webinar.endDate ? dateformat(new Date(webinar.endDate), 'UTC:h tt') : null
+  const endTime = webinar.endDate
+    ? dateformat(new Date(webinar.endDate), 'UTC:h tt')
+    : null
   const schedule = get(webinar, 'scheduleCollection.items', [])
   const relatedArticles = get(webinar, 'relatedPostsCollection.items', [])
   const slotList = isMobile ? ['footer'] : []
@@ -334,7 +337,7 @@ const WebinarPage = ({ webinar }) => {
             <ScBgWrapper>
               <ScSnowflakeHeaderBg />
             </ScBgWrapper>
-            <ScLogo src={webinar.logo.url} alt="" />
+            <ScLogo src={webinar.logo.url} alt='' />
             <ScName>{webinar.name}</ScName>
           </ScHeader>
           <ScSection>
@@ -346,7 +349,9 @@ const WebinarPage = ({ webinar }) => {
             )}
             <ScDescription>
               <div
-                dangerouslySetInnerHTML={{ __html: marked(webinar.description, { renderer }) }}
+                dangerouslySetInnerHTML={{
+                  __html: marked(webinar.description, { renderer }),
+                }}
               />
             </ScDescription>
             <ScRegisterButton
@@ -358,7 +363,11 @@ const WebinarPage = ({ webinar }) => {
             </ScRegisterButton>
             {callToAction && (
               <ScText>
-                <div dangerouslySetInnerHTML={{ __html: marked(callToAction, { renderer }) }} />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: marked(callToAction, { renderer }),
+                  }}
+                />
               </ScText>
             )}
           </ScSection>
@@ -393,7 +402,11 @@ const WebinarPage = ({ webinar }) => {
             <ScSection>
               <ScH2Header>{translator('Webinar.swagBags')}</ScH2Header>
               <ScDescription>
-                <ScMarkdown dangerouslySetInnerHTML={{ __html: marked(swagBags, { renderer }) }} />
+                <ScMarkdown
+                  dangerouslySetInnerHTML={{
+                    __html: marked(swagBags, { renderer }),
+                  }}
+                />
               </ScDescription>
             </ScSection>
           )}
@@ -406,7 +419,11 @@ const WebinarPage = ({ webinar }) => {
               <ScGiveawaysIcon />
               <ScH2Header>{translator('Webinar.giveAways')}</ScH2Header>
               <ScDescription>
-                <ScMarkdown dangerouslySetInnerHTML={{ __html: marked(giveaways, { renderer }) }} />
+                <ScMarkdown
+                  dangerouslySetInnerHTML={{
+                    __html: marked(giveaways, { renderer }),
+                  }}
+                />
               </ScDescription>
               <ScGiveawaysLineIcon />
             </ScSection>

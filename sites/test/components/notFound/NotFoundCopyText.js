@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Link from 'wsc/components/Link'
 import { MEDIA, COLORS } from '../../utils/styles'
-import { ReactComponent as IconNavLeft } from '../../statics/images/icon-nav-left.svg'
+import IconNavLeft from '../../statics/images/icon-nav-left.svg'
 
 const ScCopyContainer = styled.div`
   text-align: center;
@@ -60,7 +60,7 @@ const NotFoundCopyText = ({ title, description }) => {
       <h1>{title}</h1>
       <ScCopyText>{description}</ScCopyText>
       <ScLinkDiv>
-        <ScLink to="/">
+        <ScLink to='/'>
           <span>Go home</span>
           <ScSvgBox>
             <IconNavLeft />

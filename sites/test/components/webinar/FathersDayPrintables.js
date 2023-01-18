@@ -14,7 +14,7 @@ import { facebookSend } from 'wsc/utils/socialShare'
 import AdProviderWrapper from '../AdProviderWrapper'
 import AdFooter from 'wsc/components/AdFooter'
 
-import { ReactComponent as messengerButton } from '../../statics/images/icon-messenger.svg'
+import messengerButton from '../../statics/images/icon-messenger.svg'
 import LINE from 'wsc/statics/images/fathersDay/line.svg'
 import HAT from 'wsc/statics/images/fathersDay/hat.svg'
 import DAD from 'wsc/statics/images/fathersDay/dad.svg'
@@ -216,14 +216,16 @@ const FathersDayPage = ({ webinar }) => {
         <ScFlexWrapper>
           <ScBgWrapper></ScBgWrapper>
           <ScHeader>
-            <ScLogo src={webinar.logo.url} alt="" />
+            <ScLogo src={webinar.logo.url} alt='' />
             <ScName>{webinar.name}</ScName>
           </ScHeader>
           <ScSection>
             <ScLineIcon src={LINE} />
             <ScDescription>
               <div
-                dangerouslySetInnerHTML={{ __html: marked(webinar.description, { renderer }) }}
+                dangerouslySetInnerHTML={{
+                  __html: marked(webinar.description, { renderer }),
+                }}
               />
             </ScDescription>
             <ScRegisterButton
@@ -235,7 +237,9 @@ const FathersDayPage = ({ webinar }) => {
             </ScRegisterButton>
             <ScHatIcon src={HAT} />
             <ScH2Header>PRINTABLE FATHER’S DAY CARDS</ScH2Header>
-            {printableImage && <ScPrintableImage src={printableImage} alt="Printable Image" />}
+            {printableImage && (
+              <ScPrintableImage src={printableImage} alt='Printable Image' />
+            )}
             <ScDadIcon src={DAD} />
           </ScSection>
 

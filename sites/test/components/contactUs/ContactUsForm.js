@@ -1,23 +1,23 @@
-import React from "react"
-import { Formik } from "formik"
-import { SubmitButton } from "../button/SubmitButton"
+import React from 'react'
+import { Formik } from 'formik'
+import { SubmitButton } from '../button/SubmitButton'
 import {
   contactUsValues,
   contactUsValidator,
   TOUCH_STATE,
   autoCompleteUsPhoneNumber,
-} from "wsc/utils/forms"
-import { COLORS, MEDIA } from "../../utils/styles"
+} from 'wsc/utils/forms'
+import { COLORS, MEDIA } from '../../utils/styles'
 // import Link from "wsc/components/Link"
-import DefaultInputField from "../InputField"
-import DefaultSelectField from "../SelectField"
-import DefaultTextAreaField from "../TextAreaField"
-import styled from "styled-components"
-import PropTypes from "prop-types"
-import { sendEmail } from "wsc/utils/internalRestAPI"
-import Layout from "../Layout"
-import DocumentHead from "../DocumentHead"
-import { ReactComponent as IconNavLeft } from "../../statics/images/icon-nav-left.svg"
+import DefaultInputField from '../InputField'
+import DefaultSelectField from '../SelectField'
+import DefaultTextAreaField from '../TextAreaField'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { sendEmail } from 'wsc/utils/internalRestAPI'
+import Layout from '../Layout'
+import DocumentHead from '../DocumentHead'
+import IconNavLeft from '../../statics/images/icon-nav-left.svg'
 
 const ScFlexWrapper = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const ScFlexWrapper = styled.div`
   `}
 `
 
-const ScHeader = styled.div.attrs({ className: "font-section-header-1" })`
+const ScHeader = styled.div.attrs({ className: 'font-section-header-1' })`
   align-self: center;
   border-bottom: 3px solid ${COLORS.LT_HOSPITAL_GREEN};
   margin-bottom: 20px;
@@ -60,7 +60,7 @@ const ScOptOutLink = styled.a`
 `
 
 const ScLabel = styled.div.attrs({
-  className: "font-body",
+  className: 'font-body',
 })`
   margin-bottom: 10px;
 `
@@ -92,16 +92,16 @@ const ScImageBox = styled.div`
 `
 
 const OptOutText = ({
-  privacyPolicyLink = "https://www.wildskymedia.com/privacy-policy/",
-  sendRequestLink = "https://privacyportal-cdn.onetrust.com/dsarwebform/c932354f-213d-43fb-8919-af488348bf01/8d995c75-cfbe-4235-ab28-2bbae595d1bf.html",
+  privacyPolicyLink = 'https://www.wildskymedia.com/privacy-policy/',
+  sendRequestLink = 'https://privacyportal-cdn.onetrust.com/dsarwebform/c932354f-213d-43fb-8919-af488348bf01/8d995c75-cfbe-4235-ab28-2bbae595d1bf.html',
 }) => {
   return (
     <ScOptOutText>
-      If you’re concerned about your data, please review our privacy policy{" "}
+      If you’re concerned about your data, please review our privacy policy{' '}
       <ScOptOutLink to={privacyPolicyLink} withDefaultStyle={false}>
         here
       </ScOptOutLink>
-      , or send us a request for data access or deletion{" "}
+      , or send us a request for data access or deletion{' '}
       <ScOptOutLink to={sendRequestLink} withDefaultStyle={false}>
         here
       </ScOptOutLink>
@@ -113,8 +113,8 @@ const OptOutText = ({
 const ContactUsForm = (props) => {
   return (
     <Layout>
-      <DocumentHead title="Contact Us" />
-      <ScFlexWrapper className="noskimlinks">
+      <DocumentHead title='Contact Us' />
+      <ScFlexWrapper className='noskimlinks'>
         <ScHeader>CONTACT US</ScHeader>
         <OptOutText />
         <Formik
@@ -141,7 +141,7 @@ const ContactUsForm = (props) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.contactCategory}
-                  name="contactCategory"
+                  name='contactCategory'
                   errMsg={errors.contactCategory}
                   touchState={
                     touched.contactCategory
@@ -151,26 +151,26 @@ const ContactUsForm = (props) => {
                       : TOUCH_STATE.UNTOUCH
                   }
                   options={[
-                    { value: "general-inquiry", label: "General Inquiry" },
-                    { value: "editorial", label: "Editorial" },
-                    { value: "technical-support", label: "Technical Support" },
-                    { value: "careers", label: "Careers" },
+                    { value: 'general-inquiry', label: 'General Inquiry' },
+                    { value: 'editorial', label: 'Editorial' },
+                    { value: 'technical-support', label: 'Technical Support' },
+                    { value: 'careers', label: 'Careers' },
                     {
-                      value: "business-partner-ad",
-                      label: "Business, Partnerships & Advertising",
+                      value: 'business-partner-ad',
+                      label: 'Business, Partnerships & Advertising',
                     },
-                    { value: "press", label: "Press" },
-                    { value: "rights-licensing", label: "Rights & Licensing" },
+                    { value: 'press', label: 'Press' },
+                    { value: 'rights-licensing', label: 'Rights & Licensing' },
                   ]}
                 />
                 <ScLabel>Subject</ScLabel>
                 <InputField
-                  type="text"
+                  type='text'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.subject}
-                  name="subject"
-                  placeholder="How can we help?"
+                  name='subject'
+                  placeholder='How can we help?'
                   errMsg={errors.subject}
                   touchState={
                     touched.subject
@@ -184,12 +184,12 @@ const ContactUsForm = (props) => {
                   Name <ScOptionalText>(optional)</ScOptionalText>
                 </ScLabel>
                 <InputField
-                  type="text"
+                  type='text'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.fullName}
-                  name="fullName"
-                  placeholder="Your name"
+                  name='fullName'
+                  placeholder='Your name'
                   errMsg={errors.fullName}
                   touchState={
                     touched.fullName
@@ -201,12 +201,12 @@ const ContactUsForm = (props) => {
                 />
                 <ScLabel>E-mail</ScLabel>
                 <InputField
-                  type="email"
+                  type='email'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
-                  name="email"
-                  placeholder="name@domain.com"
+                  name='email'
+                  placeholder='name@domain.com'
                   errMsg={errors.email}
                   touchState={
                     touched.email
@@ -220,17 +220,17 @@ const ContactUsForm = (props) => {
                   Phone <ScOptionalText>(optional)</ScOptionalText>
                 </ScLabel>
                 <InputField
-                  type="tel"
+                  type='tel'
                   onChange={(event) =>
                     setFieldValue(
-                      "phone",
+                      'phone',
                       autoCompleteUsPhoneNumber(event.target.value)
                     )
                   }
                   onBlur={handleBlur}
                   value={values.phone}
-                  name="phone"
-                  placeholder="i.e. xxx-xxx-xxxx"
+                  name='phone'
+                  placeholder='i.e. xxx-xxx-xxxx'
                   errMsg={errors.phone}
                   touchState={
                     touched.phone
@@ -245,8 +245,8 @@ const ContactUsForm = (props) => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.question}
-                  name="question"
-                  placeholder="Add your comments here"
+                  name='question'
+                  placeholder='Add your comments here'
                   errMsg={errors.question}
                   touchState={
                     touched.question
@@ -257,7 +257,7 @@ const ContactUsForm = (props) => {
                   }
                 />
                 {/* TODO: We need to implement the option to enable right arrow icon in refactoring project */}
-                <SubmitButton type="submit" disabled={!isValid}>
+                <SubmitButton type='submit' disabled={!isValid}>
                   SUBMIT
                   <ScImageBox disabled={!isValid}>
                     <IconNavLeft />

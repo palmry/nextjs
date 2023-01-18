@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Link from 'wsc/components/Link'
 import { FONT_FAMILIES, COLORS, MEDIA } from '../utils/styles'
-import { ReactComponent as right } from '../statics/images/icon-nav-left.svg'
+import right from '../statics/images/icon-nav-left.svg'
 
 const ButtonWrapper = styled.div`
   ${MEDIA.MOBILE`
@@ -70,7 +70,7 @@ const IconNext = styled(right)`
   margin-left: 6px;
 `
 
-const WhiteBottonBox = props => {
+const WhiteBottonBox = (props) => {
   return (
     <ButtonWrapper>
       <Link to={props.to} withDefaultStyle={false}>

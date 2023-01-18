@@ -1,8 +1,13 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { WelcomeBannerStateContext } from '../context/WelcomeBannerProvider'
-import { ReactComponent as CloseIcon } from '../../statics/images/icon-close.svg'
-import { FONT_FAMILIES, MEDIA, NAVIGATION_BAR_HEIGHT, COLORS } from '../../utils/styles'
+import CloseIcon from '../../statics/images/icon-close.svg'
+import {
+  FONT_FAMILIES,
+  MEDIA,
+  NAVIGATION_BAR_HEIGHT,
+  COLORS,
+} from '../../utils/styles'
 import Link from 'wsc/components/Link'
 import { useCookies } from 'react-cookie'
 import { useTranslator } from '../../hooks/useTranslator'
@@ -26,7 +31,7 @@ const ScWrapper = styled.div`
   top: 0px;
   transform: translateY(${NAVIGATION_BAR_HEIGHT}px);
   transition: transform 0.3s ease-out;
-    ${props =>
+    ${(props) =>
       props.isMoveWelcomeBar &&
       `
       transform: translateY(0px);
@@ -34,7 +39,7 @@ const ScWrapper = styled.div`
     `}
   `}
 
-  ${props =>
+  ${(props) =>
     props.isHideWelcomeBar &&
     `
     display: none;
@@ -70,14 +75,16 @@ const ScLink = styled(Link)`
 
 const WelcomeBanner = () => {
   const [, setCookie] = useCookies(['cm-betaSite'])
-  const { isHideWelcomeBar, setIsHideWelcomeBar, isMoveWelcomeBar } = useContext(
-    WelcomeBannerStateContext
-  )
+  const { isHideWelcomeBar, setIsHideWelcomeBar, isMoveWelcomeBar } =
+    useContext(WelcomeBannerStateContext)
   const { translator } = useTranslator()
   const { isMobile_S } = useContext(DetectDeviceContext)
 
   return (
-    <ScWrapper isMoveWelcomeBar={isMoveWelcomeBar} isHideWelcomeBar={isHideWelcomeBar}>
+    <ScWrapper
+      isMoveWelcomeBar={isMoveWelcomeBar}
+      isHideWelcomeBar={isHideWelcomeBar}
+    >
       <ScCloseIcon
         onClick={() => {
           setIsHideWelcomeBar(true)

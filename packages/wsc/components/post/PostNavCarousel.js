@@ -1,24 +1,24 @@
-import React, { useState, useContext, useRef } from "react"
-import PropTypes from "prop-types"
-import VisibilitySensor from "react-visibility-sensor"
-import styled from "styled-components"
-import get from "lodash/get"
-import Carousel from "nuka-carousel"
+import React, { useState, useContext, useRef } from 'react'
+import PropTypes from 'prop-types'
+import VisibilitySensor from 'react-visibility-sensor'
+import styled from 'styled-components'
+import get from 'lodash/get'
+import Carousel from 'nuka-carousel'
 
-import Link from "wsc/components/Link"
-import { MEDIA, COLORS, FONT_FAMILIES, withFullWidth } from "wsc/utils/styles"
+import Link from 'wsc/components/Link'
+import { MEDIA, COLORS, FONT_FAMILIES, withFullWidth } from 'wsc/utils/styles'
 import {
   PostNavContext,
   getPostItems,
   getCurrentIndex,
   getNextPost,
   getPreviousPost,
-} from "wsc/components/context/PostNavProvider"
-import { getActivePost } from "../../utils/activePost"
-import { ScCircleArrowRight, ScCircleArrowLeft } from "../styled/ScCircleArrow"
-import { DetectDeviceContext } from "wsc/components/context/DetectDeviceProvider"
-import { ReactComponent as RightArrow } from "../../statics/images/icon-nav-right.svg"
-import { ReactComponent as CalendarIcon } from "../../statics/images/icon-calendar.svg"
+} from 'wsc/components/context/PostNavProvider'
+import { getActivePost } from '../../utils/activePost'
+import { ScCircleArrowRight, ScCircleArrowLeft } from '../styled/ScCircleArrow'
+import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider'
+import RightArrow from '../../statics/images/icon-nav-right.svg'
+import CalendarIcon from '../../statics/images/icon-calendar.svg'
 
 const ScCalendarIcon = styled((props) => <CalendarIcon {...props} />)`
   display: block;
@@ -81,12 +81,12 @@ const ScFeaturedImagePostCarouselControl = styled.button`
   background-color: transparent;
   top: -50px;
   cursor: pointer;
-  ${(props) => (props.direction === "left" ? "left: -25px;" : "right: -25px;")}
+  ${(props) => (props.direction === 'left' ? 'left: -25px;' : 'right: -25px;')}
   svg {
     height: 15px;
     width: 9px;
     transform: rotate(
-      ${(props) => (props.direction === "left" ? "180deg" : "0deg")}
+      ${(props) => (props.direction === 'left' ? '180deg' : '0deg')}
     );
   }
 `
@@ -125,7 +125,7 @@ const ScCircularImagePostCarouselHeader = styled.section`
       &:hover,
       &:active {
         svg {
-          background-color: ${COLORS.rgba(COLORS.WHITE, "0.6")};
+          background-color: ${COLORS.rgba(COLORS.WHITE, '0.6')};
         }
       }
     }
@@ -165,7 +165,7 @@ const ScCircularImagePostCarouselHeader = styled.section`
 `
 
 const ScCircleListItem = styled.li`
-  background: url("${(props) => props.imagePath}") no-repeat center;
+  background: url('${(props) => props.imagePath}') no-repeat center;
   background-size: cover;
   border: 3px solid ${COLORS.WHITE};
   width: 135px;
@@ -187,7 +187,7 @@ const ScCircleListItem = styled.li`
     border-radius: 100%;
     &:hover,
     &:active {
-      background-color: ${COLORS.rgba(COLORS.BLACK, "0.3")};
+      background-color: ${COLORS.rgba(COLORS.BLACK, '0.3')};
     }
   }
 `
@@ -242,7 +242,7 @@ const ScCircularImagePostNavDrawer = styled.section`
       &:hover,
       &:active {
         svg {
-          background-color: ${COLORS.rgba(COLORS.WHITE, "0.6")};
+          background-color: ${COLORS.rgba(COLORS.WHITE, '0.6')};
         }
       }
     }
@@ -302,20 +302,20 @@ const CircularImagePostCarousel = (props) => {
 
   const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen)
   const toggleButtonTitle = translator
-    ? translator("postPage.jumpTo")
-    : "Jump to"
-  const titlePrefix = translator ? translator("postPage.moreFrom") : "More From"
+    ? translator('postPage.jumpTo')
+    : 'Jump to'
+  const titlePrefix = translator ? translator('postPage.moreFrom') : 'More From'
   const hideDrawer = carouselPostItems.length < 4 ? true : false
 
   return (
     <ScCircularImagePostCarousel>
       <ScCircularImagePostCarouselHeader>
         <h2>
-          {titlePrefix}{" "}
+          {titlePrefix}{' '}
           {get(
             currentPost,
-            "multipleSeriesCollection.items[0].contentNavigation.name",
-            "Series"
+            'multipleSeriesCollection.items[0].contentNavigation.name',
+            'Series'
           )}
         </h2>
         <section>
@@ -350,10 +350,10 @@ const CircularImagePostCarousel = (props) => {
           )}
         </section>
         {!hideDrawer && (
-          <div className="toggleButton" onClick={toggleDrawer}>
+          <div className='toggleButton' onClick={toggleDrawer}>
             {toggleButtonTitle}
             <RightArrow
-              className={`chevron ${isDrawerOpen ? "open" : "closed"}`}
+              className={`chevron ${isDrawerOpen ? 'open' : 'closed'}`}
             />
           </div>
         )}
@@ -378,11 +378,11 @@ const CircularImagePostCarouselDrawer = (props) => {
       <Carousel
         wrapAround={true}
         slidesToShow={isMobile ? 4.4 : isDesktop ? 7 : 6}
-        cellAlign="left"
+        cellAlign='left'
         cellSpacing={1}
-        scrollMode="remainder"
+        scrollMode='remainder'
         dragging={!hideArrows}
-        framePadding={!isMobile ? "0 40px" : "0"}
+        framePadding={!isMobile ? '0 40px' : '0'}
         slidesToScroll={isMobile ? 4.4 : 4}
         renderCenterLeftControls={({
           previousSlide,
@@ -438,17 +438,17 @@ const FeaturedImagePostCarousel = (props) => {
   const { CarouselComponent, currentPost, carouselPostItems, translator } =
     props
   const { isDesktop, isMobile } = useContext(DetectDeviceContext)
-  const titlePrefix = translator ? translator("postPage.moreFrom") : "More From"
+  const titlePrefix = translator ? translator('postPage.moreFrom') : 'More From'
 
   return (
     <ScPostNavCarousel>
       <ScCalendarIcon />
       <h2>
-        {titlePrefix}{" "}
+        {titlePrefix}{' '}
         {get(
           currentPost,
-          "multipleSeriesCollection.items[0].contentNavigation.name",
-          "Series"
+          'multipleSeriesCollection.items[0].contentNavigation.name',
+          'Series'
         )}
       </h2>
       <CarouselComponent
@@ -456,7 +456,7 @@ const FeaturedImagePostCarousel = (props) => {
         wrapAround={true}
         slidesToShow={isMobile ? 1.3723 : 3}
         slideWidth={1}
-        cellAlign="center"
+        cellAlign='center'
         cellSpacing={12}
         disablePlayIcon={true}
         renderCenterLeftControls={({ currentSlide, previousSlide }) => (
@@ -464,7 +464,7 @@ const FeaturedImagePostCarousel = (props) => {
             onClick={previousSlide}
             currentSlide={currentSlide}
             postAmount={carouselPostItems.length}
-            direction={"left"}
+            direction={'left'}
           />
         )}
         renderCenterRightControls={({ currentSlide, nextSlide }) => (
@@ -472,12 +472,12 @@ const FeaturedImagePostCarousel = (props) => {
             onClick={nextSlide}
             currentSlide={currentSlide}
             postAmount={carouselPostItems.length}
-            direction={"right"}
+            direction={'right'}
           />
         )}
         disableDotControls={isMobile ? false : true}
-        imageHeight={isMobile ? "152px" : isDesktop ? "116px" : "100px"}
-        displayCategoryMarginTop="10px"
+        imageHeight={isMobile ? '152px' : isDesktop ? '116px' : '100px'}
+        displayCategoryMarginTop='10px'
       />
     </ScPostNavCarousel>
   )
@@ -493,17 +493,17 @@ export const PostNavCarousel = (props) => {
   const carouselPostItems = getCarouselPostItems(currentIndex, postItems)
   const navigationType = get(
     currentPost,
-    "multipleSeriesCollection.items[0].contentNavigation.navigationType"
+    'multipleSeriesCollection.items[0].contentNavigation.navigationType'
   )
   const ComponentToRender =
-    navigationType === "Circular Thumbnail"
+    navigationType === 'Circular Thumbnail'
       ? CircularImagePostCarousel
       : FeaturedImagePostCarousel
 
   return (
     carouselPostItems && (
       <VisibilitySensor
-        partialVisibility={"top"}
+        partialVisibility={'top'}
         onChange={(isVisible) => {
           const isActivePost = currentPost.sys.id === getActivePost().sys.id
           const isAboveViewport =

@@ -1,10 +1,10 @@
-import React, { useContext } from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import { PreviewSiteBannerStateContext } from "./context/PreviewSiteBannerProvider"
-import { ReactComponent as CloseIcon } from "../statics/images/icon-close.svg"
-import { getConfig } from "../globalConfig"
+import { PreviewSiteBannerStateContext } from './context/PreviewSiteBannerProvider'
+import CloseIcon from '../statics/images/icon-close.svg'
+import { getConfig } from '../globalConfig'
 
 const ScBanner = styled.div`
   ${(props) =>
@@ -68,11 +68,11 @@ const PreviewSiteBanner = (props) => {
 }
 
 PreviewSiteBanner.defaultProps = {
-  message: `You are previewing ${getConfig("AppConfig")["name"] || "SITE"}`,
-  fontSize: "1.13rem",
-  fontColor: "white",
-  backgroundColor: "#cc6666",
-  closeIconColor: "white",
+  message: `You are previewing ${getConfig('AppConfig')['name'] || 'SITE'}`,
+  fontSize: '1.13rem',
+  fontColor: 'white',
+  backgroundColor: '#cc6666',
+  closeIconColor: 'white',
 }
 
 PreviewSiteBanner.propTypes = {

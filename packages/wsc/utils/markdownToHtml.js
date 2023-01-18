@@ -1,24 +1,24 @@
-import React from "react"
-import styled from "styled-components"
-import isEmpty from "lodash/isEmpty"
-import marked from "marked"
-import template from "lodash/template"
-import { createSrcSet } from "./responsiveImg"
-import quoteStart from "../statics/images/quote-start.svg"
-import quoteEnd from "../statics/images/quote-end.svg"
-import { renderToString } from "react-dom/server"
-import { ReactComponent as TwitterMarkdownIcon } from "../statics/images/icon-twitter-markdown.svg"
-import { ReactComponent as NavRightIcon } from "../statics/images/icon-nav-right.svg"
-import { PinterestButton } from "./pinterest"
+import React from 'react'
+import styled from 'styled-components'
+import isEmpty from 'lodash/isEmpty'
+import marked from 'marked'
+import template from 'lodash/template'
+import { createSrcSet } from './responsiveImg'
+import quoteStart from '../statics/images/quote-start.svg'
+import quoteEnd from '../statics/images/quote-end.svg'
+import { renderToString } from 'react-dom/server'
+import TwitterMarkdownIcon from '../statics/images/icon-twitter-markdown.svg'
+import NavRightIcon from '../statics/images/icon-nav-right.svg'
+import { PinterestButton } from './pinterest'
 import {
   getStringentEncodeURIComponent,
   markedLink,
   getWindowOption,
-} from "./redirect"
-import { getConfig } from "../globalConfig"
+} from './redirect'
+import { getConfig } from '../globalConfig'
 
 // for injecting pinterest button on top of each image
-export const TEMP_POST_TITLE = "TEMPPOSTTITLE"
+export const TEMP_POST_TITLE = 'TEMPPOSTTITLE'
 
 // Override marked's image renderer function
 // and use it to config marked()
@@ -40,11 +40,11 @@ renderer.image = function (href, title, text) {
       itemContent: title,
       withHTML: true,
     })}
-    <img class="figure-img" alt="${text || ""}" title="${
-    text || ""
+    <img class="figure-img" alt="${text || ''}" title="${
+    text || ''
   }" src="${src}" srcSet="${srcSet}" sizes="100vw" />
     <figcaption class="figure-caption font-description">${
-      title || ""
+      title || ''
     }</figcaption></div>
   </figure>`
 }
@@ -52,13 +52,13 @@ renderer.image = function (href, title, text) {
 renderer.paragraph = function (text) {
   // look to see if we have a <figure> tag (image) in this paragraph
   const match = figureRegex.exec(text)
-  const endFigure = text.indexOf("</figure>") + 9
+  const endFigure = text.indexOf('</figure>') + 9
   if (match !== null) {
-    let buffer = ""
+    let buffer = ''
     // if there is text before the image, put in a <p>
     if (match.index !== 0) {
       const pText = text.substring(0, match.index)
-      if (pText.trim() !== "") buffer += `<p>${pText}</p>`
+      if (pText.trim() !== '') buffer += `<p>${pText}</p>`
     }
 
     // add figure tag raw
@@ -66,7 +66,7 @@ renderer.paragraph = function (text) {
 
     //if there is text after the figure tag, add it in a <p> tag
     const pText = text.substring(endFigure)
-    if (pText.trim() !== "") {
+    if (pText.trim() !== '') {
       buffer += `<p>${pText}</p>`
     }
     return buffer
@@ -81,16 +81,16 @@ renderer.paragraph = function (text) {
  */
 renderer.blockquote = function (quote) {
   // seperate quote text from author by using '|' symbol
-  const result = quote.split("|")
+  const result = quote.split('|')
 
-  const text = result[0] && result[0].trim() + "</p>"
-  const author = result[1] && "<p>&#8212; " + result[1].trim()
+  const text = result[0] && result[0].trim() + '</p>'
+  const author = result[1] && '<p>&#8212; ' + result[1].trim()
 
   // clean p tag and use the result in share url
-  const quoteStr = quote.replace(/(<p>|<\/p>)|&quot;/gi, "")
+  const quoteStr = quote.replace(/(<p>|<\/p>)|&quot;/gi, '')
   const share = encodeURI(`https://twitter.com/intent/tweet?text=${quoteStr}`)
   const twitterIcon = renderToString(
-    <TwitterMarkdownIcon className="icon-twitter" />
+    <TwitterMarkdownIcon className='icon-twitter' />
   )
   const ScNavRightIconWrapper = styled.div`
     display: inline;
@@ -169,7 +169,7 @@ function updatePinterestButton(html, foundIndex, pinterestPostTitle) {
 function modifyHtml(html, pinterestPostTitle) {
   let resultHtml = html
   const pinterestButtonRegex = TEMP_POST_TITLE
-  const composedRegex = new RegExp(`${pinterestButtonRegex}`, "g")
+  const composedRegex = new RegExp(`${pinterestButtonRegex}`, 'g')
 
   let foundRegex = composedRegex.exec(resultHtml)
   while (foundRegex !== null) {
@@ -196,12 +196,12 @@ function modifyHtml(html, pinterestPostTitle) {
  * @param {string} pinterestPostTitle posts' title that use to replace Pinterest's pin description
  * @returns {string} content in html format
  */
-export function buildHtml(md, pinterestPostTitle, postLanguage = "en") {
-  if (isEmpty(md)) return ""
-  if (!postLanguage) postLanguage = "en"
+export function buildHtml(md, pinterestPostTitle, postLanguage = 'en') {
+  if (isEmpty(md)) return ''
+  if (!postLanguage) postLanguage = 'en'
   let html = mdToHtml(
     md,
-    getConfig("Translations")[postLanguage].global.markdownText
+    getConfig('Translations')[postLanguage].global.markdownText
   )
 
   // don't need to iterate modifying html

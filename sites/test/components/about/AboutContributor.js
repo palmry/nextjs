@@ -7,7 +7,7 @@ import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider
 import { MEDIA, FONT_FAMILIES, COLORS } from '../../utils/styles'
 import Link from 'wsc/components/Link'
 import routes from '../../configs/routes'
-import { ReactComponent as right } from '../../statics/images/icon-nav-left.svg'
+import right from '../../statics/images/icon-nav-left.svg'
 import AuthorImage from '../AuthorImage'
 import { useTranslator } from '../../hooks/useTranslator'
 
@@ -38,7 +38,7 @@ const ScContributorImageList = styled.div`
 const ScContributorImage = styled.div`
   margin: 0 -7px;
   ${MEDIA.DESKTOP`margin: 0 -10px;`}
-  ${props => props.zindex && `z-index: ${props.zindex};`}
+  ${(props) => props.zindex && `z-index: ${props.zindex};`}
 `
 const ScLinkSetBox = styled.div`
   margin-top: 30px;
@@ -47,7 +47,7 @@ const ScLinkSetBox = styled.div`
   `}
 `
 
-const ScLink = styled(props => <Link {...props} />).attrs({
+const ScLink = styled((props) => <Link {...props} />).attrs({
   className: 'font-description',
 })`
   letter-spacing: 0.76px;

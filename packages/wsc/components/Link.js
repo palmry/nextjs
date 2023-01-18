@@ -1,11 +1,11 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled, { css } from "styled-components"
-import { Link as ReactLink } from "react-router-dom"
-import { COLORS } from "../utils/styles"
-import { getConfig } from "../globalConfig"
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import { Link as ReactLink } from 'react-router-dom'
+import { COLORS } from '../utils/styles'
+import { getConfig } from '../globalConfig'
 
-const { DEVICE_MINWIDTH } = getConfig("StyleConfig")
+const { DEVICE_MINWIDTH } = getConfig('StyleConfig')
 
 const withNoneLinkStyle = css`
   color: inherit;
@@ -22,9 +22,7 @@ const defaultLinkStyle = `
   });
 
   ${
-    getComputedStyle(document.body).getPropertyValue(
-      "--defaultLinkStyle_HoverColor"
-    ) &&
+    withNoneLinkStyle &&
     `&:active {
       color: var(--defaultLinkStyle_HoverColor);
       svg {
@@ -105,7 +103,7 @@ const Link = ({
   const linkProps = { className, onClick }
 
   // Div Link (this type of link works with onclick function, prop `to` is useless)
-  if (to === "/#")
+  if (to === '/#')
     return withDefaultStyle ? (
       <DefaultStyledDivLink {...linkProps} {...restProps}>
         {children}
@@ -116,12 +114,12 @@ const Link = ({
       </NoneStyledDivLink>
     )
 
-  const isInternalLink = to.charAt(0) === "/"
+  const isInternalLink = to.charAt(0) === '/'
 
   // Check if it is external link and isOpenNewTab is set and not contain 'mailto:' at the beginning
   let openNewTabProp =
-    !isInternalLink && isOpenNewTab && to.indexOf("mailto:") !== 0
-      ? { target: "_blank", rel: "noopener" }
+    !isInternalLink && isOpenNewTab && to.indexOf('mailto:') !== 0
+      ? { target: '_blank', rel: 'noopener' }
       : {}
 
   // Internal Link
@@ -177,7 +175,7 @@ Link.propTypes = {
 Link.defaultProps = {
   isOpenNewTab: true,
   children: null,
-  className: "",
+  className: '',
   onClick: () => {},
   withDefaultStyle: true,
   noneBorder: false,

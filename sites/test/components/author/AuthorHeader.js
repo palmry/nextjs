@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider'
 import { MEDIA, FONT_FAMILIES } from '../../utils/styles'
 
-import { ReactComponent as sharp } from '../../statics/images/sharp.svg'
+import sharp from '../../statics/images/sharp.svg'
 
 import AuthorInfo from '../AuthorInfo'
 import AuthorTopic from './AuthorTopic'
@@ -49,7 +49,12 @@ const AuthorTopicWrapper = styled.div`
  *  RENDER PHASE
  *---------------------------------------------------------------------------------*/
 
-const AuthorHeader = ({ author, neverShowImageFrame, withSharpIcon, ...restProps }) => {
+const AuthorHeader = ({
+  author,
+  neverShowImageFrame,
+  withSharpIcon,
+  ...restProps
+}) => {
   const { isMobile, isTablet } = useContext(DetectDeviceContext)
   const imageSize = isMobile ? '100px' : isTablet ? '125px' : '150px'
 

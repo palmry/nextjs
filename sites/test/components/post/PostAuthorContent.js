@@ -3,8 +3,8 @@ import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider
 import Link from 'wsc/components/Link'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { ReactComponent as up } from '../../statics/images/icon-nav-up.svg'
-import { ReactComponent as down } from '../../statics/images/down-arrow.svg'
+import up from '../../statics/images/icon-nav-up.svg'
+import down from '../../statics/images/down-arrow.svg'
 import { withLineClamp, COLORS } from '../../utils/styles'
 import { MEDIA } from '../../utils/styles'
 
@@ -17,7 +17,7 @@ const contextline = {
 
 const ContentText = styled.div`
   line-height: ${lineHeight}px;
-  ${props => props.isTruncated && withLineClamp(contextline)}
+  ${(props) => props.isTruncated && withLineClamp(contextline)}
 `
 const regProps = `
   fill: ${COLORS.BLACK}
@@ -53,13 +53,16 @@ const PostAuthorContent = ({ dangerouslySetInnerHTML }) => {
   return (
     <div>
       <ContentText isTruncated={isTruncated}>
-        <div dangerouslySetInnerHTML={dangerouslySetInnerHTML} ref={refContainer} />
+        <div
+          dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+          ref={refContainer}
+        />
       </ContentText>
       {shouldTruncated && (
         <div>
           <Toggle
             to={'/'}
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault()
               setIsTruncated(!isTruncated)
             }}

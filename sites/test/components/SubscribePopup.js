@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
-import { ReactComponent as CloseIcon } from '../statics/images/icon-close.svg'
-import { ReactComponent as Logo } from '../statics/images/logo-lt-symbol.svg'
+import CloseIcon from '../statics/images/icon-close.svg'
+import Logo from '../statics/images/logo-lt-symbol.svg'
 import { FONT_FAMILIES, MEDIA, COLORS } from '../utils/styles'
 import SubscribeForm from './SubscribeForm'
 import { SubmitButton } from './button/SubmitButton'
@@ -9,7 +9,10 @@ import { withCookies } from 'react-cookie'
 import { getFpv } from 'wsc/utils/fpv'
 import { CSSTransition } from 'react-transition-group'
 import SubscribePopupStyle from './styled/SubscribePopupStyle'
-import { getActiveCategory, getActiveSubCategory } from 'wsc/utils/activeCategory'
+import {
+  getActiveCategory,
+  getActiveSubCategory,
+} from 'wsc/utils/activeCategory'
 import Link from 'wsc/components/Link'
 import { calculatePregnancyWeek } from 'wsc/utils/forms'
 import {
@@ -179,7 +182,7 @@ const SubscribePopup = ({ cookies }) => {
   const { isMobile } = useContext(DetectDeviceContext)
   const ignorePage = ['/', '/newsletter']
 
-  SetPageviewCountGlobal = counter => {
+  SetPageviewCountGlobal = (counter) => {
     setPageviewCount(counter)
   }
 
@@ -195,7 +198,8 @@ const SubscribePopup = ({ cookies }) => {
   }, [cookies, pageviewCount])
 
   useEffect(() => {
-    if (!isHideSubscribePopup) sendGaEvent({ eventName: 'newsletterCapture', formType: 'popup' })
+    if (!isHideSubscribePopup)
+      sendGaEvent({ eventName: 'newsletterCapture', formType: 'popup' })
   }, [isHideSubscribePopup])
 
   const closePopup = () => {
@@ -204,13 +208,16 @@ const SubscribePopup = ({ cookies }) => {
     setIsHideSubscribePopup(true)
   }
 
-  const submitHandler = async values => {
+  const submitHandler = async (values) => {
     let email = values.email
     let pregnancyWeek = values.dueDate && calculatePregnancyWeek(values.dueDate)
     let customFields = [
       createCustomFieldObject('main_category', getActiveCategory()),
       createCustomFieldObject('related_category', getActiveSubCategory()),
-      createCustomFieldObject('parental_status_checkboxes', values.parentalStatus),
+      createCustomFieldObject(
+        'parental_status_checkboxes',
+        values.parentalStatus
+      ),
       createCustomFieldObject('due_date', values.dueDate),
       createCustomFieldObject('pregnancy_week', pregnancyWeek),
       createCustomFieldObject('birthdate', values.birthdate),
@@ -219,16 +226,23 @@ const SubscribePopup = ({ cookies }) => {
     try {
       await listSubscribe(null, email, customFields)
     } catch (error) {
-      if (error?.response?.data?.httpStatus === 409 && error?.response?.data?.code === 1008) {
+      if (
+        error?.response?.data?.httpStatus === 409 &&
+        error?.response?.data?.code === 1008
+      ) {
         // Contact already added
         try {
           await getAndUpdateContact(null, email, customFields)
         } catch (error) {
-          console.error(error?.response?.data?.message || error?.message || `${error}`)
+          console.error(
+            error?.response?.data?.message || error?.message || `${error}`
+          )
           return
         }
       } else {
-        console.error(error?.response?.data?.message || error?.message || `${error}`)
+        console.error(
+          error?.response?.data?.message || error?.message || `${error}`
+        )
         return
       }
     }
@@ -254,12 +268,14 @@ const SubscribePopup = ({ cookies }) => {
           onSubmit={submitHandler}
           scLabel={ScLabel}
           scSubmitButton={ScSubmitButton}
-          submitButtonLabel="SUBMIT"
+          submitButtonLabel='SUBMIT'
           submitButtonWithArrow={false}
         />
         <ScPrivacy>
           {'View our '}
-          <ScLink to={'https://www.wildskymedia.com/privacy-policy/'}>{'Privacy Policy'}</ScLink>
+          <ScLink to={'https://www.wildskymedia.com/privacy-policy/'}>
+            {'Privacy Policy'}
+          </ScLink>
         </ScPrivacy>
         <ScCloseTextWrapper>
           <ScCloseText onClick={closePopup}>Close</ScCloseText>
@@ -277,9 +293,12 @@ const SubscribePopup = ({ cookies }) => {
     <React.Fragment>
       <SubscribePopupStyle />
       <CSSTransition
-        in={!isHideSubscribePopup && !ignorePage.includes(window.location.pathname)}
+        in={
+          !isHideSubscribePopup &&
+          !ignorePage.includes(window.location.pathname)
+        }
         timeout={300}
-        classNames="subscribe"
+        classNames='subscribe'
         unmountOnExit
       >
         {isMobile ? (

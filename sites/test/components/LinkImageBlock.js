@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import LinkImage from './LinkImage'
 import { COLORS } from '../utils/styles'
-import { ReactComponent as PlayIcon } from '../statics/images/icon-play-button.svg'
+import PlayIcon from '../statics/images/icon-play-button.svg'
 
 const ScLink = styled(LinkImage)`
   display: block;
@@ -21,14 +21,14 @@ const ScOverlay = styled.div`
   bottom: 0;
   right: 0;
   opacity: 0;
-  ${props => props.isHovering && `opacity: 0.3;`}
+  ${(props) => props.isHovering && `opacity: 0.3;`}
 `
 
 const ScPlayIcon = styled(({ buttonSize, isHovering, ...restProps }) => (
   <PlayIcon {...restProps} />
 ))`
   // Icon size
-  ${props =>
+  ${(props) =>
     props.buttonSize &&
     `
     height: ${props.buttonSize};
@@ -44,7 +44,7 @@ const ScPlayIcon = styled(({ buttonSize, isHovering, ...restProps }) => (
 
   // Icon color
   fill: ${COLORS.TWILIGHT_BLUE};
-  ${props =>
+  ${(props) =>
     props.isHovering &&
     `
     // These id names are in the .svg file.
@@ -62,11 +62,15 @@ const ScPlayIcon = styled(({ buttonSize, isHovering, ...restProps }) => (
 /** --------------------------------------------------------------------------
  * MAIN COMPONENT(s)
  -----------------------------------------------------------------------------*/
-const LinkImageBlock = props => {
+const LinkImageBlock = (props) => {
   const { to, children, isHovering, onMouseOver, onMouseOut } = props
   return (
     <ScLink to={to} withDefaultStyle={false}>
-      <ScOverlay isHovering={isHovering} onMouseOver={onMouseOver} onMouseOut={onMouseOut} />
+      <ScOverlay
+        isHovering={isHovering}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
+      />
       {children}
     </ScLink>
   )
@@ -83,8 +87,9 @@ LinkImageBlock.propTypes = {
 export default LinkImageBlock
 
 // Add more function on-top of <LinkImageBlock>
-export const LinkImageBlockWithPlayIcon = props => {
-  const { to, children, isHovering, onMouseOver, onMouseOut, buttonSize } = props
+export const LinkImageBlockWithPlayIcon = (props) => {
+  const { to, children, isHovering, onMouseOver, onMouseOut, buttonSize } =
+    props
   return (
     <LinkImageBlock
       to={to}

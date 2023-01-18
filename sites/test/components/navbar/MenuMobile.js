@@ -11,8 +11,14 @@ import MuiIconButton from '@material-ui/core/IconButton'
 import Gridlist from '../GridList'
 
 import { useTranslator } from '../../hooks/useTranslator'
-import { ReactComponent as IconNavUp } from '../../statics/images/icon-nav-up.svg'
-import { COLORS, MEDIA, PAGE_WIDTHS, withFullWidth, FONT_FAMILIES } from '../../utils/styles'
+import IconNavUp from '../../statics/images/icon-nav-up.svg'
+import {
+  COLORS,
+  MEDIA,
+  PAGE_WIDTHS,
+  withFullWidth,
+  FONT_FAMILIES,
+} from '../../utils/styles'
 import { useFreezePage } from '../../hooks/useFreezePage'
 
 const itemFlexWrapperStyle = css`
@@ -30,7 +36,7 @@ const ScWrapper = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  ${props => `height: calc(${props.viewHeight}px - 100%);`}
+  ${(props) => `height: calc(${props.viewHeight}px - 100%);`}
   width: 100vw;
   background: ${COLORS.LT_DARK_PEACH};
 
@@ -39,7 +45,7 @@ const ScWrapper = styled.div`
   transition: opacity 0.2s, visibility 0.2s;
   visibility: hidden;
   opacity: 0;
-  ${props =>
+  ${(props) =>
     props.isOpen &&
     `
       visibility: unset;
@@ -48,7 +54,7 @@ const ScWrapper = styled.div`
 `
 const ScMenuItemFlexWrapper = styled.div`
   ${itemFlexWrapperStyle}
-  ${props =>
+  ${(props) =>
     props.isExpanded
       ? `background: ${COLORS.LT_SUN_YELLOW}`
       : `border-bottom: 1px solid ${COLORS.LT_DARK_BROWN};`}
@@ -82,13 +88,13 @@ const ScMainMenuItem = styled.div.attrs({
   transform: translate(100%);
   -webkit-transform: translate(100%);
 
-  ${props =>
+  ${(props) =>
     props.slideAnimationTimeout &&
     `-webkit-transition: -webkit-transform 0.5s ${props.slideAnimationTimeout}, opacity 1s ${props.slideAnimationTimeout};
       transition: transform 0.5s ${props.slideAnimationTimeout}, opacity 1s ${props.slideAnimationTimeout};
     `}
 
-  ${props =>
+  ${(props) =>
     props.animateSlideAnimation &&
     `
       transform: translate(0%);
@@ -96,7 +102,9 @@ const ScMainMenuItem = styled.div.attrs({
       opacity: 1;
   `}
 `
-const ScIconNavUp = styled(({ isExpanded, ...restProps }) => <IconNavUp {...restProps} />)`
+const ScIconNavUp = styled(({ isExpanded, ...restProps }) => (
+  <IconNavUp {...restProps} />
+))`
   fill: ${COLORS.WHITE};
   width: 11.2px;
 
@@ -106,7 +114,7 @@ const ScIconNavUp = styled(({ isExpanded, ...restProps }) => <IconNavUp {...rest
   transform: rotate(180deg);
   transition: transform 0.4s;
 
-  ${props =>
+  ${(props) =>
     props.isExpanded &&
     `
       transform: rotate(0deg);
@@ -130,7 +138,7 @@ const ScSubMenuItemFlexWrapper = styled.div`
   -webkit-transition: max-height 0.5s, opacity 1s;
   transition: max-height 0.5s, opacity 1s;
 
-  ${props =>
+  ${(props) =>
     props.isExpanded &&
     `
       opacity: 1;
@@ -167,7 +175,7 @@ const ScSubMenuItem = styled.span.attrs({
 const CategoryStyle = css`
   flex: 1;
 
-  ${props =>
+  ${(props) =>
     props.isUnderlinedOnHover &&
     `
       &:active {
@@ -202,7 +210,7 @@ const ScInvisibleBlock = styled.div`
 // second unit
 const ANIMATION_SLIDEIN_TIME_GAP = 0.03
 
-const MenuItem = props => {
+const MenuItem = (props) => {
   const { onClickMenuItem, menuConfig, setExpandedCategoryLink } = props
   const { isTablet } = useContext(DetectDeviceContext)
   const subNavItems = get(menuConfig, 'subNavigationItems', [])
@@ -259,7 +267,7 @@ const MenuItem = props => {
         <ScSubMenuItemFlexWrapper isExpanded={isExpanded}>
           <ScSubMenuFlexBox>
             <Gridlist column={isTablet ? 2 : 1} rowGap={'15px'}>
-              {subNavItems.map(subItem => (
+              {subNavItems.map((subItem) => (
                 <ScCategoryLink
                   key={`submenu-${subItem.title}`}
                   to={subItem.url}

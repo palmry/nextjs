@@ -3,12 +3,16 @@ import { Formik } from 'formik'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { subscribeValues, subscribeValidator, TOUCH_STATE } from 'wsc/utils/forms'
+import {
+  subscribeValues,
+  subscribeValidator,
+  TOUCH_STATE,
+} from 'wsc/utils/forms'
 import InputField from './InputField'
 import CheckBox from './CheckBox'
 import { SubmitButton } from './button/SubmitButton'
 import { COLORS, MEDIA, FONT_FAMILIES } from '../utils/styles'
-import { ReactComponent as IconNavLeft } from '../statics/images/icon-nav-left.svg'
+import IconNavLeft from '../statics/images/icon-nav-left.svg'
 
 const ScLabel = styled.div`
   text-align: left;
@@ -46,7 +50,7 @@ const ScImageBox = styled.div`
   display: inline;
   margin-left: 0.38rem;
   svg {
-    fill: ${props => (props.disabled ? COLORS.LT_GREY : COLORS.WHITE)};
+    fill: ${(props) => (props.disabled ? COLORS.LT_GREY : COLORS.WHITE)};
     height: 0.56rem;
     width: 0.56rem;
   }
@@ -55,16 +59,16 @@ const ScImageBox = styled.div`
 /*----------------------------------------------------------------------------------
  *  RENDER PHASE
  *---------------------------------------------------------------------------------*/
-const SubscribeForm = props => {
+const SubscribeForm = (props) => {
   return (
     <Formik
       initialValues={subscribeValues}
-      validate={values =>
+      validate={(values) =>
         subscribeValidator(values, {
           expectedAge: props.expectedAge,
         })
       }
-      onSubmit={values => {
+      onSubmit={(values) => {
         props.onSubmit(values)
       }}
       render={({
@@ -81,12 +85,12 @@ const SubscribeForm = props => {
           <form onSubmit={handleSubmit}>
             <props.scLabel>Email*</props.scLabel>
             <ScInputField
-              type="email"
+              type='email'
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
-              name="email"
-              placeholder="name@domain.com"
+              name='email'
+              placeholder='name@domain.com'
               errMsg={errors.email}
               touchState={
                 touched.email
@@ -99,12 +103,12 @@ const SubscribeForm = props => {
             />
             <props.scLabel>Birthdate</props.scLabel>
             <ScInputField
-              type="text"
+              type='text'
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.birthdate}
-              name="birthdate"
-              placeholder="MM/DD/YYYY"
+              name='birthdate'
+              placeholder='MM/DD/YYYY'
               errMsg={errors.birthdate}
               touchState={
                 touched.birthdate
@@ -117,7 +121,7 @@ const SubscribeForm = props => {
             />
             <props.scLabel>Parental Status*</props.scLabel>
             <ScCheckbox
-              className="parental-status"
+              className='parental-status'
               items={[
                 'Trying to Conceive',
                 'Pregnant',
@@ -128,10 +132,10 @@ const SubscribeForm = props => {
                 'Teen (13-17)',
                 'None of the Above',
               ]}
-              name="parentalStatus"
+              name='parentalStatus'
               errMsg={errors.parentalStatus}
               setFieldValue={setFieldValue}
-              onChangeFunction={e => {
+              onChangeFunction={(e) => {
                 const { value } = e.target
 
                 // Clear value of dueDate is 'Pregnant' is not selected
@@ -144,12 +148,12 @@ const SubscribeForm = props => {
               <>
                 <props.scLabel>Due Date*</props.scLabel>
                 <ScInputField
-                  type="text"
+                  type='text'
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.dueDate}
-                  name="dueDate"
-                  placeholder="MM/DD/YYYY"
+                  name='dueDate'
+                  placeholder='MM/DD/YYYY'
                   errMsg={errors.dueDate}
                   touchState={
                     touched.dueDate
@@ -163,7 +167,7 @@ const SubscribeForm = props => {
               </>
             )}
             {/* TODO: We need to implement the option to enable right arrow icon in refactoring project */}
-            <props.scSubmitButton type="submit" disabled={!isValid}>
+            <props.scSubmitButton type='submit' disabled={!isValid}>
               {props.submitButtonLabel}
               {props.submitButtonWithArrow && (
                 <ScImageBox disabled={!isValid}>

@@ -7,9 +7,13 @@ import isNull from 'lodash/isNull'
 import { useTranslator } from '../../hooks/useTranslator'
 
 import Link from 'wsc/components/Link'
-import { NAVIGATION_BAR_HEIGHT, COLORS, FONT_FAMILIES } from '../../utils/styles'
+import {
+  NAVIGATION_BAR_HEIGHT,
+  COLORS,
+  FONT_FAMILIES,
+} from '../../utils/styles'
 import GREEN_TRIANGLE from '../../statics/images/triangle-up.svg'
-import { ReactComponent as IconNavUp } from '../../statics/images/icon-nav-up.svg'
+import IconNavUp from '../../statics/images/icon-nav-up.svg'
 
 /** -------------------------------------------
  * STYLED
@@ -28,18 +32,18 @@ const wrapperMainStyle = css`
   text-decoration: none;
   border: none;
   font-weight: bold;
-  ${props =>
+  ${(props) =>
     props.isActive &&
     `
     color: ${COLORS.BLACK};
     background-color: ${COLORS.LT_SUN_YELLOW};
   `}
 `
-const ScFlexWrapperMainLink = styled(({ isActive, ...restProps }) => <Link {...restProps} />).attrs(
-  {
-    className: 'font-description',
-  }
-)`
+const ScFlexWrapperMainLink = styled(({ isActive, ...restProps }) => (
+  <Link {...restProps} />
+)).attrs({
+  className: 'font-description',
+})`
   ${wrapperMainStyle}
 `
 const ScFlexWrapperMainNonLink = styled.div.attrs({
@@ -47,12 +51,14 @@ const ScFlexWrapperMainNonLink = styled.div.attrs({
 })`
   ${wrapperMainStyle}
 `
-const ScIconNavUp = styled(({ isActive, ...restProps }) => <IconNavUp {...restProps} />)`
+const ScIconNavUp = styled(({ isActive, ...restProps }) => (
+  <IconNavUp {...restProps} />
+))`
   margin-left: 5px;
   width: 7px;
   fill: black;
   transform: rotateX(180deg);
-  ${props =>
+  ${(props) =>
     props.isActive &&
     `
     transform: none;
@@ -63,7 +69,7 @@ const ScAbsoluteTriangle = styled.img`
   bottom: 0;
   left: calc(50% - 10px);
   width: 20px;
-  ${props => !props.isActive && 'display: none;'}
+  ${(props) => !props.isActive && 'display: none;'}
 `
 const ScAbsoluteWrapper = styled.ul`
   background-color: ${COLORS.LT_DARK_GREY_BLUE};
@@ -71,7 +77,7 @@ const ScAbsoluteWrapper = styled.ul`
   position: absolute;
   top: ${NAVIGATION_BAR_HEIGHT}px;
   white-space: nowrap;
-  ${props => {
+  ${(props) => {
     return `
       display: ${props.isActive ? 'block' : 'none'};
       ${props.isLeftAlign ? 'left: 0;' : 'right: 0;'}
@@ -92,8 +98,8 @@ const ScSubLink = styled(({ isFirstItem, isLastItem, ...restProps }) => (
   text-decoration: none;
   font-weight: bold;
   color: ${COLORS.WHITE};
-  ${props => props.isFirstItem && 'padding-top: 20px;'}
-  ${props => props.isLastItem && 'padding-bottom: 20px;'}
+  ${(props) => props.isFirstItem && 'padding-top: 20px;'}
+  ${(props) => props.isLastItem && 'padding-bottom: 20px;'}
   &:hover {
     color: ${COLORS.LT_LIGHT_GRAY};
     text-decoration: underline;
@@ -103,17 +109,30 @@ const ScSubLink = styled(({ isFirstItem, isLastItem, ...restProps }) => (
 /** -------------------------------------------------------
  * SUB-COMPONENT(s)
  ---------------------------------------------------------- */
-const MenuItem = props => {
+const MenuItem = (props) => {
   const [isActive, setIsActive] = useState(false)
-  const RenderComponent = isNull(props.titleURL) ? ScFlexWrapperMainNonLink : ScFlexWrapperMainLink
+  const RenderComponent = isNull(props.titleURL)
+    ? ScFlexWrapperMainNonLink
+    : ScFlexWrapperMainLink
   return (
-    <ScMainItem onMouseEnter={() => setIsActive(true)} onMouseLeave={() => setIsActive(false)}>
-      <RenderComponent to={props.titleURL} isActive={isActive} withDefaultStyle={false}>
+    <ScMainItem
+      onMouseEnter={() => setIsActive(true)}
+      onMouseLeave={() => setIsActive(false)}
+    >
+      <RenderComponent
+        to={props.titleURL}
+        isActive={isActive}
+        withDefaultStyle={false}
+      >
         {props.title}
         {!isEmpty(props.subNavigationItems) && (
           <React.Fragment>
             <ScIconNavUp isActive={isActive} />
-            <ScAbsoluteTriangle src={GREEN_TRIANGLE} alt="" isActive={isActive} />
+            <ScAbsoluteTriangle
+              src={GREEN_TRIANGLE}
+              alt=''
+              isActive={isActive}
+            />
           </React.Fragment>
         )}
       </RenderComponent>

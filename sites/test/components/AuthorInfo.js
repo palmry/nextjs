@@ -1,23 +1,23 @@
-import isEmpty from "lodash/isEmpty"
-import React, { useContext } from "react"
-import styled from "styled-components"
-import PropTypes from "prop-types"
-import marked from "marked"
-import { defaultLinkStyleToUseInMD } from "wsc/components/Link"
-import { markedLink } from "wsc/utils/redirect"
-import { DetectDeviceContext } from "wsc/components/context/DetectDeviceProvider"
-import { useTranslator } from "../hooks/useTranslator"
+import isEmpty from 'lodash/isEmpty'
+import React, { useContext } from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import marked from 'marked'
+import { defaultLinkStyleToUseInMD } from 'wsc/components/Link'
+import { markedLink } from 'wsc/utils/redirect'
+import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider'
+import { useTranslator } from '../hooks/useTranslator'
 
-import AuthorImage from "./AuthorImage"
-import AuthorSocialLinks, { hasSocialLink } from "./author/AuthorSocialLinks"
-import FancyHeader from "./FancyHeader"
-import Link from "wsc/components/Link"
-import routes from "../configs/routes"
-import { MEDIA, COLORS, FONT_FAMILIES } from "../utils/styles"
-import { ReactComponent as right } from "../statics/images/icon-nav-left.svg"
+import AuthorImage from './AuthorImage'
+import AuthorSocialLinks, { hasSocialLink } from './author/AuthorSocialLinks'
+import FancyHeader from './FancyHeader'
+import Link from 'wsc/components/Link'
+import routes from '../configs/routes'
+import { MEDIA, COLORS, FONT_FAMILIES } from '../utils/styles'
+import right from '../statics/images/icon-nav-left.svg'
 
 const ScFlexWrapper = styled.div.attrs({
-  className: "font-small-body",
+  className: 'font-small-body',
 })`
   display: flex;
   flex-direction: row;
@@ -83,7 +83,7 @@ const ScLinkSetBox = styled.div`
 `
 
 const ScLink = styled((props) => <Link {...props} />).attrs({
-  className: "font-description",
+  className: 'font-description',
 })`
   &:hover {
     border-bottom: var(
@@ -126,13 +126,13 @@ const AuthorInfo = ({
 
   const containContent = !isEmpty(author.content)
   const containSocial = hasSocialLink(author)
-  const autherIndexDisplayType = containContent ? "flex" : "block"
-  let autherIndexLinkMarginTop = "52px"
+  const autherIndexDisplayType = containContent ? 'flex' : 'block'
+  let autherIndexLinkMarginTop = '52px'
   if (isMobile) {
-    autherIndexLinkMarginTop = containSocial ? "12px" : "22px"
+    autherIndexLinkMarginTop = containSocial ? '12px' : '22px'
   } else {
     if (!containContent) {
-      autherIndexLinkMarginTop = containSocial ? "5px" : "20px"
+      autherIndexLinkMarginTop = containSocial ? '5px' : '20px'
     }
   }
   return (
@@ -142,7 +142,7 @@ const AuthorInfo = ({
         src={imageUrl}
         size={imageSize}
         resourceSizeValues={[150, 300, 450]}
-        resourceSizeRules={["1x", "2x", "3x"]}
+        resourceSizeRules={['1x', '2x', '3x']}
         {...restProps}
         withImageShadow={true}
       />
@@ -153,12 +153,12 @@ const AuthorInfo = ({
       >
         <FancyHeader
           title={name}
-          iconVerticalAlign="baseline"
+          iconVerticalAlign='baseline'
           withCenterLayout={false}
-          titleHtmlTag="h1"
-          titleClassName=""
-          withTextTransform="none"
-          iconWidth={isDesktop ? "2.0625em" : isTablet ? "1.625em" : "1.375em"}
+          titleHtmlTag='h1'
+          titleClassName=''
+          withTextTransform='none'
+          iconWidth={isDesktop ? '2.0625em' : isTablet ? '1.625em' : '1.375em'}
         />
         {authorTitle && <ScAuthorTitle>{authorTitle}</ScAuthorTitle>}
         {!isEmpty(content) && (
@@ -177,7 +177,7 @@ const AuthorInfo = ({
           {/* view all contributors */}
           <ScLinkSetBox marginTop={autherIndexLinkMarginTop}>
             <ScLink to={routes.authorIndex.path} withDefaultStyle={false}>
-              {translator("author.viewAllContributors")}
+              {translator('author.viewAllContributors')}
             </ScLink>
             <IconNext />
           </ScLinkSetBox>
@@ -203,9 +203,9 @@ AuthorInfo.propTypes = {
 
 AuthorInfo.defaultProps = {
   authors: [],
-  imageSize: "100px",
+  imageSize: '100px',
   withCenterLayout: false,
-  columnGap: "",
+  columnGap: '',
 }
 
 export default AuthorInfo

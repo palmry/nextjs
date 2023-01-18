@@ -1,11 +1,11 @@
-import React from "react"
-import styled from "styled-components"
-import PropTypes from "prop-types"
-import { COLORS, FONT_FAMILIES, withButton } from "../../utils/styles"
-import { ReactComponent as IconNavRight } from "../../statics/images/icon-nav-right.svg"
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { COLORS, FONT_FAMILIES, withButton } from '../../utils/styles'
+import IconNavRight from '../../statics/images/icon-nav-right.svg'
 
 const Button = styled.button.attrs({
-  className: "buttonAction",
+  className: 'buttonAction',
 })`
   ${withButton}
   color: white;

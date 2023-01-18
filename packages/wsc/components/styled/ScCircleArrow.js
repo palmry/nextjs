@@ -1,13 +1,13 @@
-import React from "react"
-import styled, { css } from "styled-components"
-import { getConfig } from "../../globalConfig"
-import { rgba } from "../../styleUtils"
-import { ReactComponent as RightArrow } from "../../statics/images/icon-nav-right.svg"
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { getConfig } from '../../globalConfig'
+import { rgba } from '../../styleUtils'
+import RightArrow from '../../statics/images/icon-nav-right.svg'
 
-const { COLORS } = getConfig("StyleConfig")
+const { COLORS } = getConfig('StyleConfig')
 
 const withCircleIcon = css`
-  background-color: ${rgba(COLORS.WHITE, "0.3")};
+  background-color: ${rgba(COLORS.WHITE, '0.3')};
   height: 28px;
   width: 28px;
   display: block;

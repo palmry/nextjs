@@ -14,7 +14,7 @@ import { facebookSend } from 'wsc/utils/socialShare'
 import AdProviderWrapper from '../AdProviderWrapper'
 import AdFooter from 'wsc/components/AdFooter'
 
-import { ReactComponent as messengerButton } from '../../statics/images/icon-messenger.svg'
+import messengerButton from '../../statics/images/icon-messenger.svg'
 import ICON_1 from 'wsc/statics/images/thanksgiving/icon1.svg'
 import ICON_2 from 'wsc/statics/images/thanksgiving/icon2.svg'
 import ICON_3 from 'wsc/statics/images/thanksgiving/icon3.svg'
@@ -220,14 +220,16 @@ const ThanksGivingPrintablePage = ({ webinar }) => {
         <ScFlexWrapper>
           <ScBgWrapper></ScBgWrapper>
           <ScHeader>
-            <ScLogo src={webinar.logo.url} alt="" />
+            <ScLogo src={webinar.logo.url} alt='' />
             <ScName>{webinar.name}</ScName>
           </ScHeader>
           <ScSection>
             <ScIcon1 src={ICON_1} />
             <ScDescription>
               <div
-                dangerouslySetInnerHTML={{ __html: marked(webinar.description, { renderer }) }}
+                dangerouslySetInnerHTML={{
+                  __html: marked(webinar.description, { renderer }),
+                }}
               />
             </ScDescription>
             <ScRegisterButton
@@ -238,8 +240,12 @@ const ThanksGivingPrintablePage = ({ webinar }) => {
               GET MY PRINTABLES
             </ScRegisterButton>
             <ScIcon2 src={ICON_2} />
-            <ScH2Header>Fun Thanksgiving Printables and Activity Sheet</ScH2Header>
-            {printableImage && <ScPrintableImage src={printableImage} alt="Printable Image" />}
+            <ScH2Header>
+              Fun Thanksgiving Printables and Activity Sheet
+            </ScH2Header>
+            {printableImage && (
+              <ScPrintableImage src={printableImage} alt='Printable Image' />
+            )}
             <ScIcon3 src={ICON_3} />
           </ScSection>
 

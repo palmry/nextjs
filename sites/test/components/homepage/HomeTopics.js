@@ -10,10 +10,12 @@ import FancyHeader from '../FancyHeader'
 import GridList from '../GridList'
 import PortionLayout from '../PortionLayout'
 import PostItemLayout, { generatePostDataProps } from '../PostItemLayout'
-import GetPostListQuery, { getMainCategoryQueryString } from '../graphql/GetPostListQuery'
+import GetPostListQuery, {
+  getMainCategoryQueryString,
+} from '../graphql/GetPostListQuery'
 import { useTranslator } from '../../hooks/useTranslator'
 
-import { ReactComponent as IconNavLeft } from '../../statics/images/icon-nav-left.svg'
+import IconNavLeft from '../../statics/images/icon-nav-left.svg'
 import { DefaultButton } from '../button/DefaultButton'
 
 import ICON_TOPICS_UPPER from '../../statics/images/icon-topics-upper.svg'
@@ -48,7 +50,7 @@ const ScCategoryButton = styled(({ isActive, ...restProps }) => (
     width: 0.75rem;
   }
 
-  ${props =>
+  ${(props) =>
     props.isActive &&
     css`
       &:after {
@@ -117,9 +119,14 @@ const Loader = () => (
   </ScLoaderWrapper>
 )
 
-const CategoryItems = ({ topicSlugs, setActiveCategory, initialActiveSlug }) => {
+const CategoryItems = ({
+  topicSlugs,
+  setActiveCategory,
+  initialActiveSlug,
+}) => {
   const { isDesktop } = useContext(DetectDeviceContext)
-  const [currentPointerSlug, setCurrentPointerSlug] = useState(initialActiveSlug)
+  const [currentPointerSlug, setCurrentPointerSlug] =
+    useState(initialActiveSlug)
   const onMouseEnterTimeout = useRef(null)
   const { getCategoryConfig } = useTranslator()
 
@@ -127,18 +134,21 @@ const CategoryItems = ({ topicSlugs, setActiveCategory, initialActiveSlug }) => 
     clearTimeout(onMouseEnterTimeout.current)
     // debounce set active category state to reduce request count
     if (setActiveCategory)
-      onMouseEnterTimeout.current = setTimeout(() => setActiveCategory(currentPointerSlug), 1)
+      onMouseEnterTimeout.current = setTimeout(
+        () => setActiveCategory(currentPointerSlug),
+        1
+      )
   }, [currentPointerSlug, setActiveCategory])
 
   // event handler: on hover category item
-  const onMouseEnterCategoryItem = event => {
+  const onMouseEnterCategoryItem = (event) => {
     const slug = event.target.getAttribute('data-slug')
     setCurrentPointerSlug(slug)
   }
 
   return isDesktop ? (
     <GridList column={1} rowGap={'1.5rem'}>
-      {topicSlugs.map(slug => {
+      {topicSlugs.map((slug) => {
         const config = getCategoryConfig(slug)
         // validate category slug
         if (isEmpty(config)) return null
@@ -159,7 +169,7 @@ const CategoryItems = ({ topicSlugs, setActiveCategory, initialActiveSlug }) => 
     </GridList>
   ) : (
     <ScCategoryFlex>
-      {topicSlugs.map(slug => {
+      {topicSlugs.map((slug) => {
         const config = getCategoryConfig(slug)
         // validate category slug
         if (isEmpty(config)) return null
@@ -252,7 +262,7 @@ const HomeTopics = ({ topicSlugs }) => {
   return (
     <ScWrapper>
       <FancyHeader
-        title="topics"
+        title='topics'
         titleUrl={routes.contentIndex.pathResolver('parenting')}
         iconImage={ICON_TOPICS_UPPER}
         underlineImage={ICON_TOPICS_BOTTOM}

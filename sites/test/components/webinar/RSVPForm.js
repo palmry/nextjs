@@ -27,10 +27,10 @@ import { webShareAPI } from 'wsc/utils/socialShare'
 import { sendGaEvent } from 'wsc/utils/googleTagManager'
 import { useTranslator } from '../../hooks/useTranslator'
 
-import { ReactComponent as messengerButton } from '../../statics/images/icon-messenger.svg'
-import { ReactComponent as shareButton } from '../../statics/images/icon-share.svg'
-import { ReactComponent as rsvpIcon } from '../../statics/images/webinar/icon-rsvp.svg'
-import { ReactComponent as yellowStarIcon } from '../../statics/images/webinar/icon-yellow-star.svg'
+import messengerButton from '../../statics/images/icon-messenger.svg'
+import shareButton from '../../statics/images/icon-share.svg'
+import rsvpIcon from '../../statics/images/webinar/icon-rsvp.svg'
+import yellowStarIcon from '../../statics/images/webinar/icon-yellow-star.svg'
 
 const ScWrapper = styled.div`
   padding-top: 50px;
@@ -262,7 +262,7 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
     dueDate: '',
   }
 
-  const rsvpValidator = values => {
+  const rsvpValidator = (values) => {
     //site can pass in custom error message to replace default error message
     let errors = {}
     if (!values.firstName || values.firstName.trim() === '') {
@@ -305,21 +305,27 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
     RSVPRef.current.scrollIntoView({ block: 'center' })
   }
 
-  const signupError = error => {
-    console.error(error?.response?.data?.message || error?.message || `${error}`)
+  const signupError = (error) => {
+    console.error(
+      error?.response?.data?.message || error?.message || `${error}`
+    )
     setIsSuccess(false)
     RSVPRef.current.scrollIntoView({ block: 'center' })
   }
 
-  const ResponseComponent = isSuccess => {
+  const ResponseComponent = (isSuccess) => {
     return isSuccess === undefined ? (
       <ScResponseWrapper>
-        <ScResponseText>{translator('Webinar.rsvpForm.loading')}</ScResponseText>
+        <ScResponseText>
+          {translator('Webinar.rsvpForm.loading')}
+        </ScResponseText>
       </ScResponseWrapper>
     ) : isSuccess ? (
       <ScResponseWrapper>
         <ScYellowStarIcon />
-        <ScSuccessHeader>{translator('Webinar.rsvpForm.thankyou')}</ScSuccessHeader>
+        <ScSuccessHeader>
+          {translator('Webinar.rsvpForm.thankyou')}
+        </ScSuccessHeader>
         <ScResponseText>
           {translator('Webinar.rsvpForm.success1')}
           <ScShareLink
@@ -368,7 +374,7 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
           <Formik
             initialValues={rsvpValues}
             validate={rsvpValidator}
-            onSubmit={async values => {
+            onSubmit={async (values) => {
               setSubmitted(true)
               RSVPRef.current.scrollIntoView({ block: 'center' })
 
@@ -393,15 +399,23 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
               const email = values.email
               const firstname = values.firstName.trim()
               const lastname = values.lastName ? values.lastName.trim() : ''
-              const name = lastname.length > 0 ? `${firstname} ${lastname}` : firstname
-              const pregnancyWeek = values.dueDate && calculatePregnancyWeek(values.dueDate)
+              const name =
+                lastname.length > 0 ? `${firstname} ${lastname}` : firstname
+              const pregnancyWeek =
+                values.dueDate && calculatePregnancyWeek(values.dueDate)
               const customFields = [
-                createCustomFieldObject('parental_status', values.parentalStatus),
+                createCustomFieldObject(
+                  'parental_status',
+                  values.parentalStatus
+                ),
                 createCustomFieldObject('due_date', values.dueDate),
                 createCustomFieldObject('pregnancy_week', pregnancyWeek),
                 createCustomFieldObject('birthdate', values.birthDate),
                 createCustomFieldObject('postal_code', values.zipCode),
-                createCustomFieldObject('webinar_registrant', 'LTholiday202112'),
+                createCustomFieldObject(
+                  'webinar_registrant',
+                  'LTholiday202112'
+                ),
               ]
 
               try {
@@ -441,14 +455,18 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                 <form onSubmit={handleSubmit}>
                   <ScNameWrapper>
                     <ScNameItem>
-                      <ScLabel>{translator('Webinar.label.firstName')}*</ScLabel>
+                      <ScLabel>
+                        {translator('Webinar.label.firstName')}*
+                      </ScLabel>
                       <ScInputField
-                        type="text"
+                        type='text'
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.firstName}
-                        name="firstName"
-                        placeholder={translator('Webinar.placeHolder.firstName')}
+                        name='firstName'
+                        placeholder={translator(
+                          'Webinar.placeHolder.firstName'
+                        )}
                         errMsg={errors.firstName}
                         touchState={
                           touched.firstName
@@ -462,11 +480,11 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                     <ScNameItem>
                       <ScLabel>{translator('Webinar.label.lastName')}*</ScLabel>
                       <ScInputField
-                        type="text"
+                        type='text'
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.lastName}
-                        name="lastName"
+                        name='lastName'
                         placeholder={translator('Webinar.placeHolder.lastName')}
                         errMsg={errors.lastName}
                         touchState={
@@ -481,11 +499,11 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                   </ScNameWrapper>
                   <ScLabel>{translator('Webinar.label.email')}*</ScLabel>
                   <ScInputField
-                    type="email"
+                    type='email'
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
-                    name="email"
+                    name='email'
                     placeholder={translator('Webinar.placeHolder.email')}
                     errMsg={errors.email}
                     touchState={
@@ -496,16 +514,18 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                         : TOUCH_STATE.UNTOUCH
                     }
                   />
-                  <ScLabel>{translator('Webinar.label.parentalStatus')}</ScLabel>
+                  <ScLabel>
+                    {translator('Webinar.label.parentalStatus')}
+                  </ScLabel>
                   <ScSelectField
-                    onChange={e => {
+                    onChange={(e) => {
                       handleChange(e)
                       setFieldValue('dueDate', '')
                       setFieldTouched('dueDate', false)
                     }}
                     onBlur={handleBlur}
                     value={values.parentalStatus}
-                    name="parentalStatus"
+                    name='parentalStatus'
                     errMsg={errors.parentalStatus}
                     touchState={
                       touched.parentalStatus
@@ -514,23 +534,33 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                           : TOUCH_STATE.TOUCHED_NO_ERR
                         : TOUCH_STATE.UNTOUCH
                     }
-                    placeholder={translator('Webinar.placeHolder.parentalStatus')}
+                    placeholder={translator(
+                      'Webinar.placeHolder.parentalStatus'
+                    )}
                     options={[
                       {
                         value: 'Kids in household',
-                        label: translator('Webinar.optionLabel.parentalStatus.kidsInHousehold'),
+                        label: translator(
+                          'Webinar.optionLabel.parentalStatus.kidsInHousehold'
+                        ),
                       },
                       {
                         value: 'Trying to conceive',
-                        label: translator('Webinar.optionLabel.parentalStatus.tryingToConceive'),
+                        label: translator(
+                          'Webinar.optionLabel.parentalStatus.tryingToConceive'
+                        ),
                       },
                       {
                         value: 'Pregnant',
-                        label: translator('Webinar.optionLabel.parentalStatus.pregnancy'),
+                        label: translator(
+                          'Webinar.optionLabel.parentalStatus.pregnancy'
+                        ),
                       },
                       {
                         value: 'None of the above',
-                        label: translator('Webinar.optionLabel.parentalStatus.noneOfTheAbove'),
+                        label: translator(
+                          'Webinar.optionLabel.parentalStatus.noneOfTheAbove'
+                        ),
                       },
                     ]}
                   />
@@ -538,13 +568,13 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                     <React.Fragment>
                       <ScLabel>{translator('Webinar.label.dueDate')}</ScLabel>
                       <ScDateField
-                        className="rsvp-due-date"
-                        type="text"
+                        className='rsvp-due-date'
+                        type='text'
                         onBlur={handleBlur}
                         setFieldValue={setFieldValue}
                         setFieldTouched={setFieldTouched}
                         value={values.dueDate}
-                        name="dueDate"
+                        name='dueDate'
                         placeholder={translator('Webinar.placeHolder.dueDate')}
                         errMsg={errors.dueDate}
                         touchState={
@@ -559,13 +589,13 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                   )}
                   <ScLabel>{translator('Webinar.label.birthdate')}*</ScLabel>
                   <ScDateField
-                    className="rsvp-birth-date"
-                    type="text"
+                    className='rsvp-birth-date'
+                    type='text'
                     onBlur={handleBlur}
                     setFieldValue={setFieldValue}
                     setFieldTouched={setFieldTouched}
                     value={values.birthDate}
-                    name="birthDate"
+                    name='birthDate'
                     placeholder={translator('Webinar.placeHolder.birthdate')}
                     errMsg={errors.birthDate}
                     touchState={
@@ -578,11 +608,11 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                   />
                   <ScLabel>{translator('Webinar.label.zipcode')}*</ScLabel>
                   <ScInputField
-                    type="text"
+                    type='text'
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.zipCode}
-                    name="zipCode"
+                    name='zipCode'
                     placeholder={translator('Webinar.placeHolder.zipcode')}
                     errMsg={errors.zipCode}
                     touchState={
@@ -593,7 +623,7 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                         : TOUCH_STATE.UNTOUCH
                     }
                   />
-                  <ScSubmitButton type="submit" disabled={!isValid}>
+                  <ScSubmitButton type='submit' disabled={!isValid}>
                     {translator('Webinar.submitButton')}
                   </ScSubmitButton>
                 </form>
@@ -611,10 +641,16 @@ const RSVPForm = ({ shareRef, RSVPRef, webinarId, messengerClick }) => {
                 {'Terms of Use'}
               </ScLink>
               {', the '}
-              <ScLink to={'https://www.wildskymedia.com/littlethings-holiday-event-giveaway-terms'}>
+              <ScLink
+                to={
+                  'https://www.wildskymedia.com/littlethings-holiday-event-giveaway-terms'
+                }
+              >
                 {'Giveaway Terms'}
               </ScLink>
-              {', and to personalized promotions from our partners based on the data submitted.'}
+              {
+                ', and to personalized promotions from our partners based on the data submitted.'
+              }
             </>
           </ScPrivacy>
         </ScFlexWrapper>

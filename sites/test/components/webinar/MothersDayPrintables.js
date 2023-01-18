@@ -14,7 +14,7 @@ import AdProviderWrapper from '../AdProviderWrapper'
 import AdFooter from 'wsc/components/AdFooter'
 import ResponsiveImage from '../ResponsiveImage'
 
-import { ReactComponent as messengerButton } from '../../statics/images/icon-messenger.svg'
+import messengerButton from '../../statics/images/icon-messenger.svg'
 import PRINTABLE_VALENTINE from 'wsc/statics/images/mothersDay/printable-mothersday.jpg'
 import TULIP from 'wsc/statics/images/mothersDay/tulip.svg'
 
@@ -224,13 +224,15 @@ const MothersDayPage = ({ webinar }) => {
             <ScPinkBlur />
           </ScBgWrapper>
           <ScHeader>
-            <ScLogo src={webinar.logo.url} alt="" />
+            <ScLogo src={webinar.logo.url} alt='' />
             <ScName>{webinar.name}</ScName>
           </ScHeader>
           <ScSection>
             <ScDescription>
               <div
-                dangerouslySetInnerHTML={{ __html: marked(webinar.description, { renderer }) }}
+                dangerouslySetInnerHTML={{
+                  __html: marked(webinar.description, { renderer }),
+                }}
               />
             </ScDescription>
             <ScRegisterButton

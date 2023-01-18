@@ -6,7 +6,7 @@ import Link from 'wsc/components/Link'
 import LinkHeading from './LinkHeading'
 import { COLORS, withLineClamp, MEDIA, FONT_FAMILIES } from '../utils/styles'
 import { useTranslator } from '../hooks/useTranslator'
-import { ReactComponent as ICON_EXTERNAL_LINK } from 'wsc/statics/images/icon-external-link.svg'
+import ICON_EXTERNAL_LINK } from 'wsc/statics/images/icon-external-link.svg'
 
 const ScWrapper = styled.div`
   direction: ltr;

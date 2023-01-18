@@ -2,8 +2,8 @@ import React, { useContext, useRef, useEffect, useState } from 'react'
 import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider'
 import Link from 'wsc/components/Link'
 import styled from 'styled-components'
-import { ReactComponent as up } from '../../statics/images/icon-nav-up.svg'
-import { ReactComponent as down } from '../../statics/images/down-arrow.svg'
+import up from '../../statics/images/icon-nav-up.svg'
+import down from '../../statics/images/down-arrow.svg'
 import { withLineClamp, COLORS } from '../../utils/styles'
 import { MEDIA } from '../../utils/styles'
 import { useTranslator } from '../../hooks/useTranslator'
@@ -21,7 +21,7 @@ const ContentText = styled.div`
   font-size: 0.75rem;
   ${MEDIA.DESKTOP`font-size: 0.69rem;`}
   line-height: ${lineHeight}px;
-  ${props => props.isTruncated && withLineClamp(contextline)}
+  ${(props) => props.isTruncated && withLineClamp(contextline)}
 `
 const regProps = `
   fill: ${COLORS.BLACK}
@@ -86,12 +86,14 @@ const PostDisclaimer = ({ type }) => {
           <div>
             <Toggle
               to={'/'}
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault()
                 setIsTruncated(!isTruncated)
               }}
             >
-              {isTruncated ? translator('global.viewMore') : translator('global.viewLess')}
+              {isTruncated
+                ? translator('global.viewMore')
+                : translator('global.viewLess')}
             </Toggle>
             {isTruncated ? <RegDown /> : <RegUp />}
           </div>
