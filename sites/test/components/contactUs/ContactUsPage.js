@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ContactUsForm from './ContactUsForm'
 import ContactUsSubmitResult from './ContactUsSubmitResult'
-import { withRouter } from 'react-router-dom'
 
 const PAGE_STATE = {
   FORM: 'form',
@@ -16,7 +15,7 @@ const ContactUsPage = ({ history }) => {
   }, [pageState])
 
   useEffect(() => {
-    const unlisten = history.listen(location => {
+    const unlisten = history.listen((location) => {
       // Add this condition to avoid a duplicated call by changing the location to another page.
       if (location.pathname === '/contact') {
         if (pageState === PAGE_STATE.COMPLETE) {
@@ -49,4 +48,4 @@ const ContactUsPage = ({ history }) => {
   return content
 }
 
-export default withRouter(ContactUsPage)
+export default ContactUsPage

@@ -32,13 +32,15 @@ const popupHeightForMobile = '90vh'
 const popupMaxHeight = '658px'
 const popupZIndex = 10002
 
-const ScModal = styled(Modal)`
+// const ScIconMenu = styled((props) => <IconMenu {...restProps} />)``
+
+const ScModal = styled((props) => <Modal {...restProps} />)`
   z-index: ${popupZIndex} !important;
   && > div:nth-child(2) {
     outline: 0;
   }
 `
-const ScBackdrop = styled(Backdrop)`
+const ScBackdrop = styled((props) => <Backdrop {...restProps} />)`
   && {
     transition: opacity 299ms cubic-bezier(0, 0, 0.6, 1) 0ms !important;
   }
@@ -74,7 +76,7 @@ const ScWrapper = styled.div`
     background: ${COLORS.LT_SUN_YELLOW};
   }
 `
-const ScCloseIcon = styled(CloseIcon)`
+const ScCloseIcon = styled((props) => <CloseIcon {...restProps} />)`
   height: 15px;
   width: 15px;
   position: sticky;
@@ -92,7 +94,7 @@ const ScContainer = styled.div`
   color: white;
   position: absolute;
 `
-const ScLogo = styled(Logo)`
+const ScLogo = styled((props) => <Logo {...restProps} />)`
   display: block
   margin: 0 auto 12px;
   height: 32px;
@@ -132,12 +134,12 @@ const ScPrivacy = styled.div`
   font-size: 0.75rem;
   letter-spacing: 0.72px;
 `
-const ScLink = styled(Link)`
+const ScLink = styled((props) => <Link {...restProps} />)`
   border: none;
   color: ${COLORS.WHITE};
   text-decoration: underline;
 `
-const ScCloseTextWrapper = styled(ScPrivacy)`
+const ScCloseTextWrapper = styled((props) => <ScPrivacy {...restProps} />)`
   margin-top: 10px;
 `
 const ScCloseText = styled.div`
@@ -157,7 +159,7 @@ const ScLabel = styled.div`
     font-size: 1rem;
   `};
 `
-const ScSubmitButton = styled(SubmitButton)`
+const ScSubmitButton = styled((props) => <SubmitButton {...restProps} />)`
   margin-bottom: 10px;
   text-align: center;
   height: 50px;

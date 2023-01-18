@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
-import { NavbarStateContext, NavbarControlContext } from 'wsc/components/context/NavbarProvider'
+// import { withRouter } from 'react-router-dom'
+import {
+  NavbarStateContext,
+  NavbarControlContext,
+} from 'wsc/components/context/NavbarProvider'
 import AppBar from './AppBar'
 import HamburgerButton from './HamburgerButton'
 import Logo from './Logo'
@@ -81,7 +84,10 @@ const NavbarMobile = () => {
             <ScTempSearchReplacement />
           </ScContainer>
         </ScToolbar>
-        <MenuMobile isOpen={isNavbarMobileOpen} onClickMenuItem={onClickMobileMenuItem} />
+        <MenuMobile
+          isOpen={isNavbarMobileOpen}
+          onClickMenuItem={onClickMobileMenuItem}
+        />
       </ScNavbar>
     </AppBar>
   )
@@ -94,4 +100,4 @@ NavbarMobile.propTypes = {
 }
 NavbarMobile.defaultProps = {}
 
-export default withRouter(NavbarMobile)
+export default NavbarMobile

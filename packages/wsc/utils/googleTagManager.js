@@ -7,19 +7,19 @@ import { getConfig } from '../globalConfig'
 import { getPostSponsor } from './common'
 
 const appConfig = getConfig('AppConfig')
-window.dataLayer = window.dataLayer || []
+// window.dataLayer = window.dataLayer || []
 let prop30Value = {}
 
 export const setPostDimensions = (post = null) => {
   const relatedCategories =
     (post?.relatedCategoriesCollection &&
-      post.relatedCategoriesCollection.items.map(cat => cat.slug)) ||
+      post.relatedCategoriesCollection.items.map((cat) => cat.slug)) ||
     []
   const sponsor = (post && getPostSponsor(post)) || {}
   // send data to GTM data layer
   window.dataLayer.push({
     authorName: post?.authorsCollection
-      ? post.authorsCollection.items.map(author => author.name).join(',')
+      ? post.authorsCollection.items.map((author) => author.name).join(',')
       : 'none',
     publishDate: post?.publishDate
       ? dateformat(post.publishDate, `mm/dd/yy HH:MM:ss`, true)
@@ -29,7 +29,8 @@ export const setPostDimensions = (post = null) => {
     contentType: post ? post.postType : 'none',
     title: post ? post.title : 'none',
     category: post ? get(post, 'mainCategory.slug') : 'none',
-    subcategory: relatedCategories.length > 0 ? relatedCategories.join(',') : 'none',
+    subcategory:
+      relatedCategories.length > 0 ? relatedCategories.join(',') : 'none',
     abgroup: abgroupTargeting({ delimiter: '|' }) || 'none',
     postId: post?.sys ? post.sys.id : 'none',
     fbasid: fbasid || 'none',
@@ -37,7 +38,7 @@ export const setPostDimensions = (post = null) => {
   })
 }
 
-export const setProp30 = options => {
+export const setProp30 = (options) => {
   prop30Value = prop30({ ...options, site: appConfig.prop30SiteName })
   if (prop30Value) window.dataLayer.push({ prop30: prop30Value })
 }
@@ -46,7 +47,7 @@ export const getProp30 = () => {
   return prop30Value
 }
 
-export const parentalStatusVariable = parentalStatus => {
+export const parentalStatusVariable = (parentalStatus) => {
   const MAPPING_LIST = [
     {
       dlv: 'PS_tryingToConceive',

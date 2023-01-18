@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["wsc"],
-  compiler: {
-    styledComponents: true,
-  },
+  transpilePackages: ['wsc'],
 }
 
 module.exports = nextConfig
