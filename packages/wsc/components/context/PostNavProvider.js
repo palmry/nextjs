@@ -6,21 +6,26 @@ import { getActivePost } from '../../utils/activePost'
 const PostNavContext = React.createContext()
 const routes = getConfig('Routes')
 
-const getPostItems = currentPost => {
+const getPostItems = (currentPost) => {
   const items = get(
     currentPost,
     'multipleSeriesCollection.items[0].contentNavigation.itemsCollection.items'
   )
   if (!currentPost || !items) return null
-  items.forEach(item => {
-    item.path = routes.post.pathResolver(item.post.mainCategory.slug, item.post.slug)
+  items.forEach((item) => {
+    item.path = routes.post.pathResolver(
+      item.post.mainCategory.slug,
+      item.post.slug
+    )
   })
   return items
 }
 
 const getCurrentIndex = (currentPost, items) => {
   if (!currentPost || !items) return null
-  const currentIndex = items.findIndex(item => currentPost.sys.id === item.post.sys.id)
+  const currentIndex = items.findIndex(
+    (item) => currentPost.sys.id === item.post.sys.id
+  )
   return currentIndex !== -1 ? currentIndex : null
 }
 
@@ -34,7 +39,7 @@ const getNextPost = (currentIndex, items) => {
   return currentIndex < items.length - 1 ? items[currentIndex + 1] : items[0]
 }
 
-const PostNavProvider = props => {
+const PostNavProvider = (props) => {
   const [isShowPostNavBar, setIsShowPostNavBar] = useState(false)
   const postBarVisibilityMap = useRef({})
   const [postNavBarOffset, setPostNavBarOffset] = useState(2)
@@ -43,14 +48,15 @@ const PostNavProvider = props => {
   const currentIndex = getCurrentIndex(currentPost, postItems)
   const previousPost = getPreviousPost(currentIndex, postItems)
   const nextPost = getNextPost(currentIndex, postItems)
-  const isDisabled = !postItems || !previousPost || !nextPost || postItems.length < 2
+  const isDisabled =
+    !postItems || !previousPost || !nextPost || postItems.length < 2
 
   return (
     <PostNavContext.Provider
       value={{
         isShowPostNavBar,
         postBarVisibilityMap,
-        isPostBarVisible: postId => !!postBarVisibilityMap.current[postId],
+        isPostBarVisible: (postId) => !!postBarVisibilityMap.current[postId],
         setIsShowPostNavBar,
         setPostBarVisible: (isVisible, postId) => {
           const isActivePost = getActivePost().sys.id === postId

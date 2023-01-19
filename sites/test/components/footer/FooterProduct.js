@@ -27,7 +27,7 @@ const ScProductDiv = styled.div`
     text-align: left;
     margin-top: 0px;
   `}
-  ${props => props.order && `order: ${props.order};`}
+  ${(props) => props.order && `order: ${props.order};`}
 `
 
 /*----------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ const ScProductDiv = styled.div`
  *---------------------------------------------------------------------------------*/
 
 const FooterProduct = () => {
-  const { isTablet, isDesktop } = useContext(DetectDeviceContext)
+  const { isTablet, isDesktop } = () => useContext(DetectDeviceContext)
   // Need to define CONTACT_LIST here for using isMobile function
   const PRODUCT_LIST = [
     {

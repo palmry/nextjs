@@ -1,18 +1,18 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
-import LOGO_YELLOW from "../../statics/images/logo-lt-allyellow.svg"
+import React, { useContext } from 'react'
+import styled from 'styled-components'
+import LOGO_YELLOW from '../../statics/images/logo-lt-allyellow.svg'
 import {
   MEDIA,
   COLORS,
   PADDINGS,
   PAGE_WIDTHS,
   FONT_FAMILIES,
-} from "../../utils/styles"
-import { DetectDeviceContext } from "wsc/components/context/DetectDeviceProvider"
-import { useTranslator } from "../../hooks/useTranslator"
-import FooterSocial from "./FooterSocial"
-import FooterContact from "./FooterContact"
-import FooterProduct from "./FooterProduct"
+} from '../../utils/styles'
+import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider'
+import { useTranslator } from '../../hooks/useTranslator'
+import FooterSocial from './FooterSocial'
+import FooterContact from './FooterContact'
+import FooterProduct from './FooterProduct'
 
 const ScWrapper = styled.div`
   position: relative;
@@ -63,7 +63,7 @@ const ScSeparator = styled.hr`
 `
 
 const ScUnderSeparatorDiv = styled.div.attrs({
-  className: "font-description",
+  className: 'font-description',
 })`
   color: ${COLORS.WHITE};
   display: flex;
@@ -113,7 +113,7 @@ const ScParentCompany = styled(ScCorpDetail)`
  *---------------------------------------------------------------------------------*/
 
 const Footer = () => {
-  const { isDesktop, isMobile_S } = useContext(DetectDeviceContext)
+  const { isDesktop, isMobile_S } = () => useContext(DetectDeviceContext)
   const { translator } = useTranslator()
   const currentYear = new Date().getFullYear()
 
@@ -124,7 +124,7 @@ const Footer = () => {
         <ScLogoImg src={LOGO_YELLOW} />
 
         {/* Title */}
-        <ScTitle>{translator("footer.missionStatement")}</ScTitle>
+        <ScTitle>{translator('footer.missionStatement')}</ScTitle>
 
         {/* Social button */}
         <FooterSocial />
@@ -138,12 +138,12 @@ const Footer = () => {
 
           {/* Wild Sky Media corperation detail*/}
           <ScCorpDetail order={2}>
-            © {currentYear} WILD SKY MEDIA.{isMobile_S ? <br /> : " "}ALL RIGHTS
+            © {currentYear} WILD SKY MEDIA.{isMobile_S ? <br /> : ' '}ALL RIGHTS
             RESERVED.
           </ScCorpDetail>
           <ScCorpDetail order={isDesktop ? 4 : 3}>
-            {translator("footer.credit")} {isMobile_S ? <br /> : "|"}{" "}
-            {translator("footer.creditFamily")}
+            {translator('footer.credit')} {isMobile_S ? <br /> : '|'}{' '}
+            {translator('footer.creditFamily')}
           </ScCorpDetail>
 
           {/* All Product link */}

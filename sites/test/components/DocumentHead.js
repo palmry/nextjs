@@ -58,8 +58,8 @@ const DocumentHead = (props) => {
             markUrlAsSeen(window.location.href)
 
             //send FBpx data through
-            fbPixelInit()
-            fbSendEvent('PageView')
+            // fbPixelInit()
+            // fbSendEvent('PageView')
             // Send page view event
             if (isFirstPageView) {
               keywee.initialize()
@@ -71,10 +71,10 @@ const DocumentHead = (props) => {
             // lotame.sendPageview()
 
             // Implement pageview_candidate Keyword
-            addComscore({
-              catString: props.mainCategorySlug,
-              relatedCategorySlugs,
-            })
+            // addComscore({
+            //   catString: props.mainCategorySlug,
+            //   relatedCategorySlugs,
+            // })
 
             setFirstLoad(false)
           }
@@ -85,39 +85,39 @@ const DocumentHead = (props) => {
         {/* seo tags */}
         <title>{`${title} | ${APP_CONFIGS.name}`}</title>
         {process.env.REACT_APP_NETLIFY_CONTEXT !== 'production' && (
-          <meta name='robots' content='noindex,nofollow'></meta>
+          <meta name="robots" content="noindex,nofollow"></meta>
         )}
-        <meta name='description' content={description} />
-        <link rel='canonical' href={canonicalLink} />
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalLink} />
         {/* prefetch font */}
         {/* {JW_FONT_CONFIG.map(style => {
           return <link rel="prefetch" href={style.url} as="font" key={style.url} />
         })} */}
         {/* og tags */}
-        <meta property='og:url' content={ogURL} />
-        <meta property='og:site_name' content={APP_CONFIGS.name} />
-        <meta property='og:type' content={ogType} />
-        <meta property='og:locale' content='en_US' />
-        <meta property='og:title' content={ogTitle} />
-        <meta property='og:description' content={ogDescription} />
-        <meta property='og:image' content={ogImageUrl} />
-        <meta property='og:image:alt' content={ogImageDescription} />
-        <meta property='og:image:width' content={ogImageWidth} />
-        <meta property='og:image:height' content={ogImageHeight} />
+        <meta property="og:url" content={ogURL} />
+        <meta property="og:site_name" content={APP_CONFIGS.name} />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDescription} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:alt" content={ogImageDescription} />
+        <meta property="og:image:width" content={ogImageWidth} />
+        <meta property="og:image:height" content={ogImageHeight} />
 
         {/* twitter tags */}
-        <meta name='twitter:card' content='summary_large_image' />
-        <meta name='twitter:site' content='@LittleThingsUSA' />
-        <meta name='twitter:title' content={ogTitle} />
-        <meta name='twitter:description' content={ogDescription} />
-        <meta name='twitter:image' content={ogImageUrl} />
-        <meta name='twitter:image:alt' content={ogImageDescription} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@LittleThingsUSA" />
+        <meta name="twitter:title" content={ogTitle} />
+        <meta name="twitter:description" content={ogDescription} />
+        <meta name="twitter:image" content={ogImageUrl} />
+        <meta name="twitter:image:alt" content={ogImageDescription} />
 
         {/* Tell prerender the page is ready*/}
         <script> window.prerenderReady = true; </script>
 
         {/* Parsely tag*/}
-        <script type='application/ld+json'>
+        <script type="application/ld+json">
           {JSON.stringify(
             parselyData
               ? parselyData

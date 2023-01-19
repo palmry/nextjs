@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { Link as ReactLink } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { COLORS } from '../utils/styles'
 import { getConfig } from '../globalConfig'
 
@@ -57,11 +57,11 @@ export const defaultLinkStyleToUseInMD = `
   }
 `
 
-const DefaultStyledLink = styled(ReactLink)`
+const DefaultStyledLink = styled.a`
   ${withDefaultLinkStyle}
 `
 
-const NoneStyledLink = styled(ReactLink)`
+const NoneStyledLink = styled.a`
   ${withNoneLinkStyle}
   border: none;
 `
@@ -98,9 +98,19 @@ const Link = ({
   onClick,
   withDefaultStyle,
   noneBorder,
+  prefetch = false,
+  replace = false,
+  shallow = false,
   ...restProps
 }) => {
   const linkProps = { className, onClick }
+  const router = useRouter()
+
+  useEffect(() => {
+    if (prefetch) {
+      router.prefetch(to)
+    }
+  }, [router, to, prefetch])
 
   // Div Link (this type of link works with onclick function, prop `to` is useless)
   if (to === '/#')
@@ -125,13 +135,35 @@ const Link = ({
   // Internal Link
   if (isInternalLink && withDefaultStyle) {
     return (
-      <DefaultStyledLink to={to} {...linkProps} {...restProps}>
+      <DefaultStyledLink
+        href={to}
+        onClick={(event) => {
+          event.preventDefault()
+          if (replace) {
+            router.replace(to, undefined, { shallow })
+          } else {
+            router.push(to, undefined, { shallow })
+          }
+        }}
+        {...restProps}
+      >
         {children}
       </DefaultStyledLink>
     )
   } else if (isInternalLink && !withDefaultStyle) {
     return (
-      <NoneStyledLink to={to} {...linkProps} {...restProps}>
+      <NoneStyledLink
+        href={to}
+        onClick={(event) => {
+          event.preventDefault()
+          if (replace) {
+            router.replace(to, undefined, { shallow })
+          } else {
+            router.push(to, undefined, { shallow })
+          }
+        }}
+        {...restProps}
+      >
         {children}
       </NoneStyledLink>
     )

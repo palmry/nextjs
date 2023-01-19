@@ -54,6 +54,7 @@ const AppBar = (props) => {
     setPostNavBarOffset,
   } = () => useContext(PostNavContext)
 
+  const setPostNavBarOffsetFunction = () => setPostNavBarOffset
   // Determine whether mobile navbar is in open state
   const isNavbarMobileOpen = () => useContext(NavbarStateContext)
   // Handle show/hide the navbar
@@ -73,13 +74,13 @@ const AppBar = (props) => {
   }, [isHideMenuBar, isShowPreviewSiteBar])
 
   useEffect(() => {
-    setPostNavBarOffset() && setPostNavBarOffset(isHideMenuBar ? 2 : 70)
-  }, [isHideMenuBar, setPostNavBarOffset])
+    setPostNavBarOffsetFunction(isHideMenuBar ? 2 : 70)
+  }, [isHideMenuBar])
 
   return (
     <ScAppBar
       className={props.className}
-      position='fixed' // Material-UI's `AppBar` component requires `position` props
+      position="fixed" // Material-UI's `AppBar` component requires `position` props
       top={isShowPreviewSiteBar ? `${PREVIEW_SITE_BAR_HEIGHT}px` : 0}
       isHideOnScreen={isHideMenuBar}
     >

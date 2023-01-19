@@ -1,5 +1,9 @@
-import * as React from "react"
-
+import * as React from 'react'
+import Link from 'wsc/components/Link'
 export const Button = () => {
-  return <button>Booppppp12</button>
+  return (
+    <Link withDefaultStyle={false} to="/contact">
+      <button>contact page</button>
+    </Link>
+  )
 }
