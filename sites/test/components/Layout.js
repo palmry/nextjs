@@ -13,14 +13,14 @@ import {
 } from '../utils/styles'
 
 import PreviewSiteBanner from 'wsc/components/PreviewSiteBanner'
-import NavbarMobile from './navbar/NavbarMobile'
-import NavbarDesktop from './navbar/NavbarDesktop'
-import SubscribePopup from './SubscribePopup'
+// import NavbarMobile from './navbar/NavbarMobile'
+// import NavbarDesktop from './navbar/NavbarDesktop'
+// import SubscribePopup from './SubscribePopup'
 import ReactComponentLoader from 'wsc/components/ReactComponentLoader'
 
 export const LAYOUT_MINWIDTH = 320
 
-const Footer = lazy(() => import('./footer/Footer'))
+// const Footer = lazy(() => import('./footer/Footer'))
 
 const ScWrapper = styled.div`
   display: flex;
@@ -71,17 +71,15 @@ const Layout = (props) => {
   return (
     <ScWrapper paddingTop={wrapperPaddingTop}>
       <PreviewSiteBanner />
-      {isDesktop ? <NavbarDesktop /> : <NavbarMobile />}
+      {/* {isDesktop ? <NavbarDesktop /> : <NavbarMobile />} */}
       <ScContainer
         fullscreen={props.fullscreen}
         contentVerticalPadding={contentVerticalPadding}
       >
         {children}
       </ScContainer>
-      <ReactComponentLoader>
-        <Footer />
-      </ReactComponentLoader>
-      <SubscribePopup key={`popup-key}`} />
+      <ReactComponentLoader>{/* <Footer /> */}</ReactComponentLoader>
+      {/* <SubscribePopup key={`popup-key}`} /> */}
     </ScWrapper>
   )
 }

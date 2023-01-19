@@ -16,7 +16,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { sendEmail } from 'wsc/utils/internalRestAPI'
 import Layout from '../Layout'
-import DocumentHead from '../DocumentHead'
+// import DocumentHead from '../DocumentHead'
 import IconNavLeft from '../../statics/images/icon-nav-left.svg'
 
 const ScFlexWrapper = styled.div`
@@ -113,7 +113,7 @@ const OptOutText = ({
 const ContactUsForm = (props) => {
   return (
     <Layout>
-      <DocumentHead title='Contact Us' />
+      {/* <DocumentHead title='Contact Us' /> */}
       <ScFlexWrapper className='noskimlinks'>
         <ScHeader>CONTACT US</ScHeader>
         <OptOutText />

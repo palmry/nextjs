@@ -73,7 +73,7 @@ const AppBar = (props) => {
   }, [isHideMenuBar, isShowPreviewSiteBar])
 
   useEffect(() => {
-    setPostNavBarOffset() && setPostNavBarOffset(isHideMenuBar ? 2 : 70)
+    setPostNavBarOffset(isHideMenuBar ? 2 : 70)
   }, [isHideMenuBar, setPostNavBarOffset])
 
   return (
