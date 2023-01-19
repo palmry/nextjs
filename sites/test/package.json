@@ -30,6 +30,8 @@
     }
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.25"
+    "@svgr/webpack": "^6.5.1",
+    "@types/styled-components": "^5.1.25",
+    "babel-plugin-inline-react-svg": "^2.0.1"
   }
 }

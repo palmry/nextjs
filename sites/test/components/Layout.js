@@ -31,37 +31,39 @@ const ScWrapper = styled.div`
   ${MEDIA.MOBILE`
     overflow-x: hidden;
   `}
-  ${props => props.paddingTop && `padding-top: ${props.paddingTop};`}
+  ${(props) => props.paddingTop && `padding-top: ${props.paddingTop};`}
 `
 const ScContainer = styled.div`
   position: relative;
   margin: 0 auto;
   width: 100%;
   flex-grow: 1; // for making Footer is always on bottom
-  ${props =>
+  ${(props) =>
     props.contentVerticalPadding &&
     `padding-top: ${props.contentVerticalPadding};
     padding-bottom: ${props.contentVerticalPadding};`}
 
-    ${MEDIA.MOBILE`
+  ${MEDIA.MOBILE`
     padding-left: ${PADDINGS.DEFAULT.MOBILE}px;
     padding-right: ${PADDINGS.DEFAULT.MOBILE}px;
     `}
     ${MEDIA.TABLET`width: ${PAGE_WIDTHS.TABLET}px;`}
     ${MEDIA.DESKTOP`width: ${PAGE_WIDTHS.DESKTOP}px;`}
 
-    ${props => props.fullscreen && MEDIA.MOBILE`padding: 0;`}
-    ${props => props.fullscreen && MEDIA.TABLET`width: 100%;`}
-    ${props => props.fullscreen && MEDIA.DESKTOP`width: 100%;`}
+    ${(props) => props.fullscreen && MEDIA.MOBILE`padding: 0;`}
+    ${(props) => props.fullscreen && MEDIA.TABLET`width: 100%;`}
+    ${(props) => props.fullscreen && MEDIA.DESKTOP`width: 100%;`}
 `
 /*----------------------------------------------------------------------------------
  *  RENDER PHASE
  *---------------------------------------------------------------------------------*/
 
-const Layout = props => {
+const Layout = (props) => {
   const { children, contentVerticalPadding } = props
-  const { isDesktop } = useContext(DetectDeviceContext)
-  const { isShowPreviewSiteBar } = useContext(PreviewSiteBannerStateContext)
+  const { isDesktop } = () => useContext(DetectDeviceContext)
+  const {
+    isShowPreviewSiteBar,
+  } = () => useContext(PreviewSiteBannerStateContext)
   const wrapperPaddingTop = isShowPreviewSiteBar
     ? `${NAVIGATION_BAR_HEIGHT + PREVIEW_SITE_BAR_HEIGHT}px`
     : `${NAVIGATION_BAR_HEIGHT}px`
@@ -70,13 +72,16 @@ const Layout = props => {
     <ScWrapper paddingTop={wrapperPaddingTop}>
       <PreviewSiteBanner />
       {isDesktop ? <NavbarDesktop /> : <NavbarMobile />}
-      <ScContainer fullscreen={props.fullscreen} contentVerticalPadding={contentVerticalPadding}>
+      <ScContainer
+        fullscreen={props.fullscreen}
+        contentVerticalPadding={contentVerticalPadding}
+      >
         {children}
       </ScContainer>
       <ReactComponentLoader>
         <Footer />
       </ReactComponentLoader>
-      <SubscribePopup key={`popup-${window.location.pathname}`} />
+      <SubscribePopup key={`popup-key}`} />
     </ScWrapper>
   )
 }

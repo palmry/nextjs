@@ -330,7 +330,7 @@ const MenuMobile = ({ isOpen, onClickMenuItem }) => {
   }, [isOpen])
 
   // Adjust the component height according to screen orientation
-  const [viewHeight, setViewHeight] = useState(window.innerHeight)
+  const [viewHeight, setViewHeight] = useState('800px')
   useEffect(() => {
     const handleResize = () => {
       setViewHeight(window.innerHeight)
@@ -351,18 +351,19 @@ const MenuMobile = ({ isOpen, onClickMenuItem }) => {
       // Actual view height without mobile browser's interface e.g. address bar, back buttons
       viewHeight={viewHeight}
     >
-      {getNavbarConfig().map((menu, index) => (
-        <MenuItem
-          key={`menu-${menu.title}`}
-          menuConfig={menu}
-          animateSlideAnimation={isOpen}
-          slideAnimationTimeout={`${ANIMATION_SLIDEIN_TIME_GAP * index}s`}
-          onClickMenuItem={onClickMenuItem}
-          // expanded category link handler
-          expandedCategoryLink={expandedCategoryLink}
-          setExpandedCategoryLink={setExpandedCategoryLink}
-        />
-      ))}
+      {getNavbarConfig() &&
+        getNavbarConfig().map((menu, index) => (
+          <MenuItem
+            key={`menu-${menu.title}`}
+            menuConfig={menu}
+            animateSlideAnimation={isOpen}
+            slideAnimationTimeout={`${ANIMATION_SLIDEIN_TIME_GAP * index}s`}
+            onClickMenuItem={onClickMenuItem}
+            // expanded category link handler
+            expandedCategoryLink={expandedCategoryLink}
+            setExpandedCategoryLink={setExpandedCategoryLink}
+          />
+        ))}
       <ScInvisibleBlock /> {/* to avoid footer ad overlapping */}
     </ScWrapper>
   )

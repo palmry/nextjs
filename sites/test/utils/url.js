@@ -7,8 +7,8 @@ import { SetPageviewCountGlobal } from '../components/SubscribePopup'
 // Changes the URL in the browser without reloading the page
 const seenUrls = []
 
-export const isSeenUrl = url => seenUrls.includes(url)
-export const markUrlAsSeen = url => seenUrls.push(url)
+export const isSeenUrl = (url) => seenUrls.includes(url)
+export const markUrlAsSeen = (url) => seenUrls.push(url)
 export const clearSeenUrls = () => (seenUrls.length = 0)
 
 let lastSeenUrlBeforeChange = ''
@@ -16,12 +16,11 @@ export const getLastSeenUrlBeforeChange = () => lastSeenUrlBeforeChange
 
 // parses the current url to return the base URL of the post (without slide slug)
 export const getPostBaseUrl = () => {
-  return urlWithoutTrailingSlash(
-    window.location.href
-      .split('/')
-      .slice(0, 5)
-      .join('/')
-  ).split('?')[0] // remove query string
+  if (typeof window !== 'undefined') {
+    return urlWithoutTrailingSlash(
+      window.location.href.split('/').slice(0, 5).join('/')
+    ).split('?')[0] // remove query string
+  }
 }
 
 export const changeBrowserUrl = (url, title = null) => {
@@ -56,13 +55,10 @@ export function urlWithoutTrailingSlash(url) {
  * @param {*} post
  */
 
-export const getPostUrl = post => {
+export const getPostUrl = (post) => {
   return `${
     urlWithoutTrailingSlash(
-      window.location.href
-        .split('/')
-        .slice(0, 3)
-        .join('/')
+      window.location.href.split('/').slice(0, 3).join('/')
     ).split('?')[0]
   }/${get(post, 'mainCategory.slug')}/${post.slug}`
 }

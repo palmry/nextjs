@@ -46,9 +46,10 @@ const ScCloseIcon = styled(({ closeIconColor, ...restProps }) => (
  *---------------------------------------------------------------------------------*/
 
 const PreviewSiteBanner = (props) => {
-  const { isShowPreviewSiteBar, setIsShowPreviewSiteBar } = useContext(
-    PreviewSiteBannerStateContext
-  )
+  const {
+    isShowPreviewSiteBar,
+    setIsShowPreviewSiteBar,
+  } = () => useContext(PreviewSiteBannerStateContext)
 
   return (
     isShowPreviewSiteBar && (

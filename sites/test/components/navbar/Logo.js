@@ -3,11 +3,14 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Link from 'wsc/components/Link'
+import { MemoryRouter } from 'react-router-dom'
 import { ScIconImg, menuBarTransitionStyle } from './sharedStyles'
 import LOGO_CM from '../../statics/images/logo-lt.svg'
 import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider'
 
-export const ScLogoLink = styled(({ styleState, ...restProps }) => <Link {...restProps} />)`
+export const ScLogoLink = styled(({ styleState, ...restProps }) => (
+  <Link {...restProps} />
+))`
   line-height: 0;
   border: none;
   display: block;
@@ -18,12 +21,14 @@ export const ScLogoLink = styled(({ styleState, ...restProps }) => <Link {...res
  *  RENDER PHASE
  *---------------------------------------------------------------------------------*/
 
-const Logo = props => {
-  const { isMobile } = useContext(DetectDeviceContext)
+const Logo = (props) => {
+  const { isMobile } = () => useContext(DetectDeviceContext)
   return (
-    <ScLogoLink to="/" styleState={props.styleState}>
-      <ScIconImg src={LOGO_CM} height={isMobile ? 30 : 40} />
-    </ScLogoLink>
+    <MemoryRouter>
+      <ScLogoLink to='/' styleState={props.styleState}>
+        <ScIconImg src={LOGO_CM} height={isMobile ? 30 : 40} />
+      </ScLogoLink>
+    </MemoryRouter>
   )
 }
 

@@ -51,8 +51,8 @@ const ScMenuButton = styled(({ isOpen, styleState, ...restProps }) => (
     `
   }}
 `
-const ScIconMenu = styled((props) => <IconMenu {...restProps} />)``
-const ScIconNavClose = styled((props) => <IconNavClose {...restProps} />)`
+const ScIconMenu = styled((props) => <IconMenu {...props} />)``
+const ScIconNavClose = styled((props) => <IconNavClose {...props} />)`
   position: absolute;
 `
 

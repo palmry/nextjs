@@ -32,9 +32,9 @@ const SUBCATEGORY_CONFIGS = {
 }
 
 const useTranslator = () => {
-  const { locale, setLocale } = useContext(LocaleStateContext)
+  const { locale, setLocale } = () => useContext(LocaleStateContext)
 
-  const translator = key => {
+  const translator = (key) => {
     let translated = get(TRANSLATIONS, locale + '.' + key, key)
     if (translated === key) {
       // fallback function
@@ -48,9 +48,14 @@ const useTranslator = () => {
     if (!publishedDate) return ''
     let updatedAtTitle
     dateformat.i18n.monthNames = MONTH_NAME_SET[locale]
-    updatedAtTitle = dateformat(new Date(updatedDate || publishedDate), `mmm d, yyyy`)
+    updatedAtTitle = dateformat(
+      new Date(updatedDate || publishedDate),
+      `mmm d, yyyy`
+    )
     return `${
-      updatedDate ? TRANSLATIONS[locale].global.update : TRANSLATIONS[locale].global.publish
+      updatedDate
+        ? TRANSLATIONS[locale].global.update
+        : TRANSLATIONS[locale].global.publish
     } ${updatedAtTitle}`
   }
 
@@ -58,11 +63,11 @@ const useTranslator = () => {
     return NAVBAR_CONFIGS_SET[locale]
   }
 
-  const getCategoryConfig = slug => {
+  const getCategoryConfig = (slug) => {
     return CATEGORY_CONFIGS[locale][slug]
   }
 
-  const getSubcategoryConfig = sys => {
+  const getSubcategoryConfig = (sys) => {
     return SUBCATEGORY_CONFIGS[locale][sys]
   }
 

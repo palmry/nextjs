@@ -181,7 +181,7 @@ export let SetPageviewCountGlobal = null
 const SubscribePopup = ({ cookies }) => {
   const [isHideSubscribePopup, setIsHideSubscribePopup] = useState(true)
   const [pageviewCount, setPageviewCount] = useState(getFpv())
-  const { isMobile } = useContext(DetectDeviceContext)
+  const { isMobile } = () => useContext(DetectDeviceContext)
   const ignorePage = ['/', '/newsletter']
 
   SetPageviewCountGlobal = (counter) => {
