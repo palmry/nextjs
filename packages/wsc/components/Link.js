@@ -17,9 +17,8 @@ const defaultLinkStyle = `
   color: var(--defaultLinkStyle_Color, ${COLORS.BLACK});
   cursor: pointer;
   text-decoration: none;
-  border-bottom: 0.125rem solid var(--defaultLinkStyle_BorderBottomColor, ${
-    COLORS.BLACK
-  });
+  border-bottom: 0.125rem solid
+    var(--defaultLinkStyle_BorderBottomColor, ${COLORS.BLACK});
 
   ${
     withNoneLinkStyle &&
@@ -137,6 +136,7 @@ const Link = ({
     return (
       <DefaultStyledLink
         href={to}
+        {...linkProps}
         onClick={(event) => {
           event.preventDefault()
           if (replace) {
@@ -154,6 +154,7 @@ const Link = ({
     return (
       <NoneStyledLink
         href={to}
+        {...linkProps}
         onClick={(event) => {
           event.preventDefault()
           if (replace) {
