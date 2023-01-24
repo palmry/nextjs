@@ -181,7 +181,7 @@ export let SetPageviewCountGlobal = null
 const SubscribePopup = ({ cookies }) => {
   const [isHideSubscribePopup, setIsHideSubscribePopup] = useState(true)
   const [pageviewCount, setPageviewCount] = useState(getFpv())
-  const { isMobile } = () => useContext(DetectDeviceContext)
+  const { isMobile } = useContext(DetectDeviceContext)
   const ignorePage = ['/', '/newsletter']
 
   SetPageviewCountGlobal = (counter) => {
@@ -270,7 +270,7 @@ const SubscribePopup = ({ cookies }) => {
           onSubmit={submitHandler}
           scLabel={ScLabel}
           scSubmitButton={ScSubmitButton}
-          submitButtonLabel='SUBMIT'
+          submitButtonLabel="SUBMIT"
           submitButtonWithArrow={false}
         />
         <ScPrivacy>
@@ -300,7 +300,7 @@ const SubscribePopup = ({ cookies }) => {
           !ignorePage.includes(window.location.pathname)
         }
         timeout={300}
-        classNames='subscribe'
+        classNames="subscribe"
         unmountOnExit
       >
         {isMobile ? (
