@@ -113,7 +113,7 @@ const ScParentCompany = styled(ScCorpDetail)`
  *---------------------------------------------------------------------------------*/
 
 const Footer = () => {
-  const { isDesktop, isMobile_S } = () => useContext(DetectDeviceContext)
+  const { isDesktop, isMobile_S } = useContext(DetectDeviceContext)
   const { translator } = useTranslator()
   const currentYear = new Date().getFullYear()
 

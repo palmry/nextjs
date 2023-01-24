@@ -22,10 +22,10 @@ export const ScLogoLink = styled(({ styleState, ...restProps }) => (
  *---------------------------------------------------------------------------------*/
 
 const Logo = (props) => {
-  const { isMobile } = () => useContext(DetectDeviceContext)
+  const { isMobile } = useContext(DetectDeviceContext)
   return (
     <MemoryRouter>
-      <ScLogoLink to='/' styleState={props.styleState}>
+      <ScLogoLink to="/" styleState={props.styleState}>
         <ScIconImg src={LOGO_CM} height={isMobile ? 30 : 40} />
       </ScLogoLink>
     </MemoryRouter>

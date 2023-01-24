@@ -75,7 +75,7 @@ const POST_ITEM_LAYOUT = {
 }
 
 const HomeTopFeaturedMainSection = ({ post }) => {
-  const { isDesktop, isTablet } = () => useContext(DetectDeviceContext)
+  const { isDesktop, isTablet } = useContext(DetectDeviceContext)
   if (isEmpty(post)) return null
 
   const isPromo = post.__typename === 'Promo'

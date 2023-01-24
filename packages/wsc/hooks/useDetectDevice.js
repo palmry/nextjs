@@ -9,8 +9,13 @@ const { DEVICE_MINWIDTH } = getConfig('StyleConfig')
  */
 export const useDetectDevice = () => {
   const [device, setDevice] = useState(detectDeviceType())
+
   useEffect(() => {
     const handleResize = () => {
+      console.log(
+        '>>> [useDetectDevice.js] window.innerWidth : ',
+        window.innerWidth
+      )
       // isMobile_S
       if (!device.isMobile_S && window.innerWidth < DEVICE_MINWIDTH.MOBILE) {
         setDevice({
@@ -47,7 +52,10 @@ export const useDetectDevice = () => {
           isDesktop: false,
         })
         // isDesktop
-      } else if (!device.isDesktop && window.innerWidth >= DEVICE_MINWIDTH.DESKTOP) {
+      } else if (
+        !device.isDesktop &&
+        window.innerWidth >= DEVICE_MINWIDTH.DESKTOP
+      ) {
         setDevice({
           isMobile_S: false,
           isMobile_L: false,

@@ -130,7 +130,7 @@ const MenuItem = (props) => {
             <ScIconNavUp isActive={isActive} />
             <ScAbsoluteTriangle
               src={GREEN_TRIANGLE}
-              alt=''
+              alt=""
               isActive={isActive}
             />
           </React.Fragment>

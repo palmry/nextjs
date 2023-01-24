@@ -35,7 +35,7 @@ const ScProductDiv = styled.div`
  *---------------------------------------------------------------------------------*/
 
 const FooterProduct = () => {
-  const { isTablet, isDesktop } = () => useContext(DetectDeviceContext)
+  const { isTablet, isDesktop } = useContext(DetectDeviceContext)
   // Need to define CONTACT_LIST here for using isMobile function
   const PRODUCT_LIST = [
     {

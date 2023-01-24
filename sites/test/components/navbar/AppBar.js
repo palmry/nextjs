@@ -45,18 +45,13 @@ const ScAppBar = styled(({ isHideOnScreen, top, ...restProps }) => (
 const AppBar = (props) => {
   const [isHideMenuBar, setIsHideMenuBar] = useState(false)
   const { scrollDirection } = useDetectScrolling()
-  const { isDesktop } = () => useContext(DetectDeviceContext)
-  const {
-    isShowPreviewSiteBar,
-  } = () => useContext(PreviewSiteBannerStateContext)
-  const {
-    isShowPostNavBar,
-    setPostNavBarOffset,
-  } = () => useContext(PostNavContext)
+  const { isDesktop } = useContext(DetectDeviceContext)
+  const { isShowPreviewSiteBar } = useContext(PreviewSiteBannerStateContext)
+  const { isShowPostNavBar, setPostNavBarOffset } = useContext(PostNavContext)
 
   const setPostNavBarOffsetFunction = () => setPostNavBarOffset
   // Determine whether mobile navbar is in open state
-  const isNavbarMobileOpen = () => useContext(NavbarStateContext)
+  const isNavbarMobileOpen = useContext(NavbarStateContext)
   // Handle show/hide the navbar
   useEffect(() => {
     if (!isNavbarMobileOpen || isDesktop) {

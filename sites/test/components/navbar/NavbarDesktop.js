@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
 import DefaultAppBar from './AppBar'
 import Logo from './Logo'
 import MenuDesktop from './MenuDesktop'
@@ -72,10 +71,10 @@ const NavbarDesktop = () => {
 }
 
 NavbarDesktop.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
+  // history: PropTypes.shape({
+  //   push: PropTypes.func,
+  // }).isRequired,
 }
 NavbarDesktop.defaultProps = {}
 
-export default withRouter(NavbarDesktop)
+export default NavbarDesktop

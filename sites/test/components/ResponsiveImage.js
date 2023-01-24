@@ -41,7 +41,7 @@ const ScImageShadow = styled.div`
 
 /* __ WORKS WITH CONTENTFUL IMAGE ONLY __ */
 const ResponsiveImage = (props) => {
-  const { isTablet, isDesktop } = () => useContext(DetectDeviceContext)
+  const { isTablet, isDesktop } = useContext(DetectDeviceContext)
   let imageSizeValues = props.resourceSizeValues
   if (!imageSizeValues) imageSizeValues = IMG_SRCSET_WIDTH_CONFIGS
   const formattedImgObj = createSrcSet(

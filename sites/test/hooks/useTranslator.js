@@ -32,7 +32,7 @@ const SUBCATEGORY_CONFIGS = {
 }
 
 const useTranslator = () => {
-  const { locale, setLocale } = () => useContext(LocaleStateContext)
+  const { locale, setLocale } = useContext(LocaleStateContext)
 
   const translator = (key) => {
     let translated = get(TRANSLATIONS, locale + '.' + key, key)

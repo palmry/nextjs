@@ -60,10 +60,9 @@ const ScContainer = styled.div`
 
 const Layout = (props) => {
   const { children, contentVerticalPadding } = props
-  const { isDesktop } = () => useContext(DetectDeviceContext)
-  const {
-    isShowPreviewSiteBar,
-  } = () => useContext(PreviewSiteBannerStateContext)
+  const { isDesktop } = useContext(DetectDeviceContext)
+  console.log('>>> [Layout.js] isDesktop : ', isDesktop)
+  const { isShowPreviewSiteBar } = useContext(PreviewSiteBannerStateContext)
   const wrapperPaddingTop = isShowPreviewSiteBar
     ? `${NAVIGATION_BAR_HEIGHT + PREVIEW_SITE_BAR_HEIGHT}px`
     : `${NAVIGATION_BAR_HEIGHT}px`

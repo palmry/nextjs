@@ -14,7 +14,7 @@ import MODULE_CONFIGS from '../../statics/configs/module.json'
  *---------------------------------------------------------------------------------*/
 
 const HomeTopFeatured = ({ moduleConfig }) => {
-  const { isDesktop, isTablet } = () => useContext(DetectDeviceContext)
+  const { isDesktop, isTablet } = useContext(DetectDeviceContext)
   const topFeaturedModule = MODULE_CONFIGS[moduleConfig.name]
 
   if (isEmpty(topFeaturedModule)) return null

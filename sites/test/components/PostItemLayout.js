@@ -96,11 +96,7 @@ export function generatePostDataPropsByPromo(
 
 const PostItemLayout = (props) => {
   // device with
-  const {
-    isMobile,
-    isTablet,
-    isDesktop,
-  } = () => useContext(DetectDeviceContext)
+  const { isMobile, isTablet, isDesktop } = useContext(DetectDeviceContext)
   let isColumnDirection,
     imageSizeProps,
     mainPortionWidth,

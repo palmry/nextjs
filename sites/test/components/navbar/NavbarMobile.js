@@ -93,11 +93,7 @@ const NavbarMobile = () => {
   )
 }
 
-NavbarMobile.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
-}
+NavbarMobile.propTypes = {}
 NavbarMobile.defaultProps = {}
 
 export default NavbarMobile

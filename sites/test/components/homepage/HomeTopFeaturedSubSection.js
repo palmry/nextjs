@@ -38,7 +38,7 @@ const ScFancyHeader = styled(FancyHeader)`
  *---------------------------------------------------------------------------------*/
 
 const HomeTopFeaturedSubSection = ({ posts, title, destinationUrl }) => {
-  const { isDesktop, isTablet } = () => useContext(DetectDeviceContext)
+  const { isDesktop, isTablet } = useContext(DetectDeviceContext)
   const imageSize = isDesktop ? '8.25rem' : null
 
   if (isEmpty(posts)) return null

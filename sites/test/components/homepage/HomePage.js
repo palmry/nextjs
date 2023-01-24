@@ -63,7 +63,7 @@ const HOMEPAGE_MID_FEATURE = [
  *---------------------------------------------------------------------------------*/
 
 const HomePage = (props) => {
-  const { isMobile, isDesktop } = () => useContext(DetectDeviceContext)
+  const { isMobile, isDesktop } = useContext(DetectDeviceContext)
   const slotConfig = { targeting: { au2: 'homepage' } }
   const slotList = [
     ['leader', slotConfig],
