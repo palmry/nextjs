@@ -1,15 +1,15 @@
-import isEmpty from "lodash/isEmpty"
+import isEmpty from 'lodash/isEmpty'
 
-import React, { useContext } from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { DetectDeviceContext } from "wsc/components/context/DetectDeviceProvider"
+import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider'
 import PostItemLayout, {
   generatePostDataProps,
   generatePostDataPropsByPromo,
-} from "../PostItemLayout"
+} from '../PostItemLayout'
 
-import { COLORS, MEDIA, POST_ITEM_IMAGE_TYPE } from "../../utils/styles"
+import { COLORS, MEDIA, POST_ITEM_IMAGE_TYPE } from '../../utils/styles'
 
 const ScContainer = styled.div`
   margin-bottom: 0px;
@@ -58,27 +58,27 @@ const ScGreenBgWrapper = styled.div`
 const POST_ITEM_LAYOUT = {
   MOBILE_S: {
     imageType: POST_ITEM_IMAGE_TYPE.FULL_WIDTH_IMAGE,
-    optionsFullWidthImage: { imageHeight: "180px", isColumnDirection: true },
+    optionsFullWidthImage: { imageHeight: '180px', isColumnDirection: true },
   },
   MOBILE: {
     imageType: POST_ITEM_IMAGE_TYPE.FULL_WIDTH_IMAGE,
-    optionsFullWidthImage: { imageHeight: "232px", isColumnDirection: true },
+    optionsFullWidthImage: { imageHeight: '232px', isColumnDirection: true },
   },
   TABLET: {
     imageType: POST_ITEM_IMAGE_TYPE.DYNAMIC_SIZE_IMAGE,
-    optionsDynamicSizeImage: { imageHeight: "342px", isColumnDirection: true },
+    optionsDynamicSizeImage: { imageHeight: '342px', isColumnDirection: true },
   },
   DESKTOP: {
     imageType: POST_ITEM_IMAGE_TYPE.DYNAMIC_SIZE_IMAGE,
-    optionsDynamicSizeImage: { imageHeight: "380px", isColumnDirection: true },
+    optionsDynamicSizeImage: { imageHeight: '380px', isColumnDirection: true },
   },
 }
 
 const HomeTopFeaturedMainSection = ({ post }) => {
-  const { isDesktop, isTablet } = useContext(DetectDeviceContext)
+  const { isDesktop, isTablet } = () => useContext(DetectDeviceContext)
   if (isEmpty(post)) return null
 
-  const isPromo = post.__typename === "Promo"
+  const isPromo = post.__typename === 'Promo'
   const postDataProps = isPromo
     ? generatePostDataPropsByPromo(post)
     : generatePostDataProps(post)
@@ -89,7 +89,7 @@ const HomeTopFeaturedMainSection = ({ post }) => {
       <PostItemLayout
         {...postDataProps}
         // styling
-        titleHtmlTag={"h2"}
+        titleHtmlTag={'h2'}
         titleLines={{ mobileLines: 3, tabletLines: 3, desktopLines: 3 }}
         titleColor={COLORS.BLACK}
         displayCategoryTitleColor={
@@ -100,7 +100,7 @@ const HomeTopFeaturedMainSection = ({ post }) => {
             : COLORS.LT_SUN_YELLOW
         }
         displayCategoryMarginTop={
-          isDesktop ? "46px" : isTablet ? "42px" : "39px"
+          isDesktop ? '46px' : isTablet ? '42px' : '39px'
         }
         externalLinkIconColor={isDesktop ? undefined : COLORS.BLACK}
         // layout

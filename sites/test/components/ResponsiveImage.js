@@ -16,7 +16,7 @@ const ScImageSqrFlex = styled.div`
   width: 100%;
   padding-bottom: 100%;
   overflow: hidden;
-  ${props =>
+  ${(props) =>
     `
     object-position: ${props.squareCroppingPreference};
   `}
@@ -24,11 +24,11 @@ const ScImageSqrFlex = styled.div`
 const ScImageShadow = styled.div`
   width: 100%;
   align-self: flex-start;
-  ${props => props.withShadow && withImageBoxShadow}
-  ${props => props.withFullWidth && withFullWidth}
+  ${(props) => props.withShadow && withImageBoxShadow}
+  ${(props) => props.withFullWidth && withFullWidth}
 
   /* circle option */
-  ${props =>
+  ${(props) =>
     props.isCircle &&
     `
     border-radius: 50%;
@@ -40,8 +40,8 @@ const ScImageShadow = styled.div`
  *---------------------------------------------------------------------------------*/
 
 /* __ WORKS WITH CONTENTFUL IMAGE ONLY __ */
-const ResponsiveImage = props => {
-  const { isTablet, isDesktop } = useContext(DetectDeviceContext)
+const ResponsiveImage = (props) => {
+  const { isTablet, isDesktop } = () => useContext(DetectDeviceContext)
   let imageSizeValues = props.resourceSizeValues
   if (!imageSizeValues) imageSizeValues = IMG_SRCSET_WIDTH_CONFIGS
   const formattedImgObj = createSrcSet(
@@ -57,7 +57,11 @@ const ResponsiveImage = props => {
   // image sizes for handle srcset
   const sizes =
     props.sizes ||
-    (isDesktop ? `${PAGE_WIDTHS.DESKTOP}px` : isTablet ? `${PAGE_WIDTHS.TABLET}px` : '100vw')
+    (isDesktop
+      ? `${PAGE_WIDTHS.DESKTOP}px`
+      : isTablet
+      ? `${PAGE_WIDTHS.TABLET}px`
+      : '100vw')
 
   const imageProps = {
     alt: title,
@@ -101,7 +105,12 @@ ResponsiveImage.propTypes = {
   resourceSizeValues: PropTypes.arrayOf(number),
   resourceSizeRules: PropTypes.arrayOf(String),
   squareSize: PropTypes.string,
-  squareCroppingPreference: PropTypes.oneOf(['none', 'left', 'center', 'right']),
+  squareCroppingPreference: PropTypes.oneOf([
+    'none',
+    'left',
+    'center',
+    'right',
+  ]),
   isCircle: PropTypes.bool,
   isSqrFlex: PropTypes.bool,
   activeLoad: PropTypes.bool,

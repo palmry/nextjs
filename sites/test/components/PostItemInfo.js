@@ -6,7 +6,7 @@ import Link from 'wsc/components/Link'
 import LinkHeading from './LinkHeading'
 import { COLORS, withLineClamp, MEDIA, FONT_FAMILIES } from '../utils/styles'
 import { useTranslator } from '../hooks/useTranslator'
-import ICON_EXTERNAL_LINK } from 'wsc/statics/images/icon-external-link.svg'
+import ICON_EXTERNAL_LINK from 'wsc/statics/images/icon-external-link.svg'
 
 const ScWrapper = styled.div`
   direction: ltr;
@@ -16,10 +16,10 @@ const ScCategoryTitle = styled.div.attrs({
   className: 'font-description',
 })`
   text-transform: uppercase;
-  ${props => props.isBold && `font-weight: bold;`}
+  ${(props) => props.isBold && `font-weight: bold;`}
   margin-bottom: 10px;
   letter-spacing: 0.72px;
-  color: ${props => props.color};
+  color: ${(props) => props.color};
   ${MEDIA.DESKTOP`letter-spacing: 0.66px;`}
 `
 const ScDateTitle = styled.div.attrs({ className: 'font-description' })`
@@ -29,10 +29,10 @@ const ScDateTitle = styled.div.attrs({ className: 'font-description' })`
 `
 const titleStyle = css`
   font-family: ${FONT_FAMILIES.ASAP};
-  color: ${props => props.color};
+  color: ${(props) => props.color};
 
   & a > div:first-child {
-    ${props => props.titleLines && withLineClamp({ ...props.titleLines })}
+    ${(props) => props.titleLines && withLineClamp({ ...props.titleLines })}
   }
 `
 const ScTitleH1 = styled.h1`
@@ -62,7 +62,7 @@ const ScExternalLinkIcon = styled(ICON_EXTERNAL_LINK)`
   height: 20px;
   margin-top: 10px;
   display: block;
-  ${props => props.color && `fill: ${props.color};`}
+  ${(props) => props.color && `fill: ${props.color};`}
   ${MEDIA.TABLET`width: 17px; height: 17px;`}
   ${MEDIA.MOBILE`width: 13px; height: 13px;`}
 `
@@ -79,7 +79,7 @@ const TitleComponents = {
   suggestedTitle: ScSuggestedTitle,
 }
 
-const PostItemInfo = props => {
+const PostItemInfo = (props) => {
   const {
     titleHtmlTag,
     titleColor,
@@ -136,13 +136,20 @@ const PostItemInfo = props => {
     <ScWrapper>
       {displayCategoryTitle && (
         <CategoryComponent>
-          <ScCategoryTitle isBold={isDisplayCategoryTitleBold} color={displayCategoryTitleColor}>
+          <ScCategoryTitle
+            isBold={isDisplayCategoryTitleBold}
+            color={displayCategoryTitleColor}
+          >
             {displayCategoryTitle}
           </ScCategoryTitle>
         </CategoryComponent>
       )}
 
-      <TitleComponent color={titleColor} titleLines={titleLines} onClick={onClick}>
+      <TitleComponent
+        color={titleColor}
+        titleLines={titleLines}
+        onClick={onClick}
+      >
         <LinkHeading
           to={postUrl}
           isHovering={isHoveringHeading}
@@ -150,7 +157,9 @@ const PostItemInfo = props => {
           onMouseOut={onMouseOutHeading}
         >
           <div>{title}</div>
-          {destinationUrl && <ScExternalLinkIcon color={externalLinkIconColor} />}
+          {destinationUrl && (
+            <ScExternalLinkIcon color={externalLinkIconColor} />
+          )}
         </LinkHeading>
       </TitleComponent>
 
@@ -160,7 +169,14 @@ const PostItemInfo = props => {
 }
 
 PostItemInfo.propTypes = {
-  titleHtmlTag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h4ParentingTitle', 'suggestedTitle']),
+  titleHtmlTag: PropTypes.oneOf([
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h4ParentingTitle',
+    'suggestedTitle',
+  ]),
   titleLines: PropTypes.shape({
     mobileLines: PropTypes.number,
     tabletLines: PropTypes.number,

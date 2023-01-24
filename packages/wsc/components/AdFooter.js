@@ -1,15 +1,15 @@
-import React, { useContext } from "react"
-import { AdSlot } from "wildsky-components"
-import { getConfig } from "wsc/globalConfig"
-import { DetectDeviceContext } from "wsc/components/context/DetectDeviceProvider"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { MEDIA, PAGE_WIDTHS, PADDINGS } from "../utils/styles"
-import { getActivePost } from "wildsky-components"
-import { getPostTargeting } from "wsc/utils/postTargeting"
-import { useRefreshInterval } from "../hooks/useRefreshInterval"
+import React, { useContext } from 'react'
+import { AdSlot } from 'wsc'
+import { getConfig } from 'wsc/globalConfig'
+import { DetectDeviceContext } from 'wsc/components/context/DetectDeviceProvider'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { MEDIA, PAGE_WIDTHS, PADDINGS } from '../utils/styles'
+import { getActivePost } from 'wsc'
+import { getPostTargeting } from 'wsc/utils/postTargeting'
+import { useRefreshInterval } from '../hooks/useRefreshInterval'
 
-const { footerRefreshMS } = getConfig("AdConfig")
+const { footerRefreshMS } = getConfig('AdConfig')
 
 const Container = styled.div`
   position: fixed;

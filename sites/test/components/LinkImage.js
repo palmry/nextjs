@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Link as ReactLink } from 'react-router-dom'
+import { useRouter } from 'next/router'
 
-export const NoneStyledLink = styled(ReactLink)`
+export const NoneStyledLink = styled.a`
   color: inherit;
   cursor: pointer;
   text-decoration: none;
@@ -21,10 +21,20 @@ const LinkImage = ({
   isOpenNewTab,
   onClick,
   withDefaultStyle,
+  prefetch = false,
+  replace = false,
+  shallow = false,
   ...restProps
 }) => {
   const isInternalLink = to.charAt(0) === '/'
   const linkProps = { className, onClick }
+  const router = useRouter()
+
+  useEffect(() => {
+    if (prefetch) {
+      router.prefetch(to)
+    }
+  }, [router, to, prefetch])
 
   // Check if it is external link and isOpenNewTab is set and not contain 'mailto:' at the beginning
   let openNewTabProp =
@@ -36,11 +46,28 @@ const LinkImage = ({
   return (
     <React.Fragment>
       {isInternalLink ? (
-        <NoneStyledLink to={to} {...linkProps} {...restProps}>
+        <NoneStyledLink
+          href={to}
+          onClick={(event) => {
+            event.preventDefault()
+            if (replace) {
+              router.replace(to, undefined, { shallow })
+            } else {
+              router.push(to, undefined, { shallow })
+            }
+          }}
+          {...linkProps}
+          {...restProps}
+        >
           {children}
         </NoneStyledLink>
       ) : (
-        <ScExternalLink href={to} {...linkProps} {...restProps} {...openNewTabProp}>
+        <ScExternalLink
+          href={to}
+          {...linkProps}
+          {...restProps}
+          {...openNewTabProp}
+        >
           {children}
         </ScExternalLink>
       )}

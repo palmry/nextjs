@@ -14,7 +14,7 @@ import MODULE_CONFIGS from '../../statics/configs/module.json'
  *---------------------------------------------------------------------------------*/
 
 const HomeTopFeatured = ({ moduleConfig }) => {
-  const { isDesktop, isTablet } = useContext(DetectDeviceContext)
+  const { isDesktop, isTablet } = () => useContext(DetectDeviceContext)
   const topFeaturedModule = MODULE_CONFIGS[moduleConfig.name]
 
   if (isEmpty(topFeaturedModule)) return null
@@ -24,7 +24,7 @@ const HomeTopFeatured = ({ moduleConfig }) => {
   const featuredPosts = get(topFeaturedModule, 'featuredPostsCollection.items')
 
   // filter out post that its publish date is set to future date
-  const currentFeaturedPosts = featuredPosts.filter(post => {
+  const currentFeaturedPosts = featuredPosts.filter((post) => {
     const postPublishDate = Date.parse(post.publishDate)
     return postPublishDate <= Date.parse(contentfulApiCurrentDateTime())
   })
@@ -33,7 +33,10 @@ const HomeTopFeatured = ({ moduleConfig }) => {
   if (isEmpty(currentFeaturedPosts)) return null
 
   const postForMainSection = currentFeaturedPosts[0] // 1 post in the left
-  const postsForSubSection = currentFeaturedPosts.slice(1, moduleConfig.amountOfPosts) // 3 posts in the right
+  const postsForSubSection = currentFeaturedPosts.slice(
+    1,
+    moduleConfig.amountOfPosts
+  ) // 3 posts in the right
 
   return (
     <PortionLayout

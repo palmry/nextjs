@@ -10,12 +10,14 @@ import PortionLayout from './PortionLayout'
 import PostItemInfo from './PostItemInfo'
 import LinkImageBlock, { LinkImageBlockWithPlayIcon } from './LinkImageBlock'
 import { COLORS, POST_ITEM_IMAGE_TYPE, withFullWidth } from '../utils/styles'
-import ResponsiveImage, { ResponsiveImageWithBoxShadow } from './ResponsiveImage'
+import ResponsiveImage, {
+  ResponsiveImageWithBoxShadow,
+} from './ResponsiveImage'
 
 const ScContentWrapper = styled.div`
   align-self: center;
 
-  ${props =>
+  ${(props) =>
     props.isColumnDirection &&
     `
       margin-left: 0;
@@ -27,7 +29,7 @@ const ScPostSeparator = styled.hr`
   background-color: ${COLORS.GRAY};
 `
 const ScImageWrapper = styled.div`
-  ${props =>
+  ${(props) =>
     props.withFullWidth &&
     `
     ${withFullWidth}`}
@@ -52,7 +54,9 @@ export function generatePostDataProps(
   // with show category title
   const displayCategory = get(post, 'displayCategory', {})
   const categoryTitleProps = withCategoryTitle && {
-    displayCategoryTitle: isSponsoredContent ? 'PROMOTED' : displayCategory.title,
+    displayCategoryTitle: isSponsoredContent
+      ? 'PROMOTED'
+      : displayCategory.title,
     displayCategorySlug: isSponsoredContent ? null : displayCategory.slug,
   }
   // with show publish / update date
@@ -73,21 +77,30 @@ export function generatePostDataProps(
   }
 }
 
-export function generatePostDataPropsByPromo(promo, isSponsoredContent = false) {
+export function generatePostDataPropsByPromo(
+  promo,
+  isSponsoredContent = false
+) {
   return {
     title: promo.title,
     image: promo.image,
     slug: '',
     categorySlug: '',
     squareCroppingPreference: promo.squareCroppingPreference || 'center',
-    displayCategoryTitle: isSponsoredContent ? 'PROMOTED' : promo.destinationSite.name,
+    displayCategoryTitle: isSponsoredContent
+      ? 'PROMOTED'
+      : promo.destinationSite.name,
     destinationUrl: promo.destinationUrl,
   }
 }
 
-const PostItemLayout = props => {
+const PostItemLayout = (props) => {
   // device with
-  const { isMobile, isTablet, isDesktop } = useContext(DetectDeviceContext)
+  const {
+    isMobile,
+    isTablet,
+    isDesktop,
+  } = () => useContext(DetectDeviceContext)
   let isColumnDirection,
     imageSizeProps,
     mainPortionWidth,
@@ -114,7 +127,11 @@ const PostItemLayout = props => {
   // image responsive configs
   if (!isEmpty(responsive)) {
     // handle responsive image type with config object
-    const config = isMobile ? responsive.MOBILE : isTablet ? responsive.TABLET : responsive.DESKTOP
+    const config = isMobile
+      ? responsive.MOBILE
+      : isTablet
+      ? responsive.TABLET
+      : responsive.DESKTOP
     imageType = get(config, 'imageType')
     square = get(config, 'optionsSquareImage', {})
     fullWidth = get(config, 'optionsFullWidthImage', {})
@@ -136,7 +153,8 @@ const PostItemLayout = props => {
   // handle layout options
   switch (imageType) {
     case POST_ITEM_IMAGE_TYPE.SQUARE_IMAGE: {
-      const imageWidth = square.imageSize || (isMobile ? '120px' : isTablet ? '296px' : '344px')
+      const imageWidth =
+        square.imageSize || (isMobile ? '120px' : isTablet ? '296px' : '344px')
       // portion layout options
       mainPortionWidth = imageWidth
       isColumnDirection = square.isColumnDirection
@@ -152,7 +170,10 @@ const PostItemLayout = props => {
       isColumnDirection = true
       mainPortionWidth = '100%'
       // responsive image options
-      imageSizeProps = { fixedHeight: fullWidth.imageHeight, withFullWidth: true }
+      imageSizeProps = {
+        fixedHeight: fullWidth.imageHeight,
+        withFullWidth: true,
+      }
       break
     }
     // DYNAMIC_SIZE_IMAGE
@@ -190,7 +211,9 @@ const PostItemLayout = props => {
     setIsHovering(false)
   }
 
-  const postURL = props.destinationUrl || routes.post.pathResolver(props.categorySlug, props.slug)
+  const postURL =
+    props.destinationUrl ||
+    routes.post.pathResolver(props.categorySlug, props.slug)
 
   // build main content components
   let ImageComponentToRender = null
@@ -203,15 +226,24 @@ const PostItemLayout = props => {
 
   if (withPlaybuttonSize) {
     ImageComponentToRender = (
-      <ScImageWrapper withFullWidth={defaultImageProps.withFullWidth} onClick={onClick}>
-        <LinkImageBlockWithPlayIcon {...linkImageBlockProps} buttonSize={withPlaybuttonSize}>
+      <ScImageWrapper
+        withFullWidth={defaultImageProps.withFullWidth}
+        onClick={onClick}
+      >
+        <LinkImageBlockWithPlayIcon
+          {...linkImageBlockProps}
+          buttonSize={withPlaybuttonSize}
+        >
           <ResponsiveImage {...defaultImageProps} />
         </LinkImageBlockWithPlayIcon>
       </ScImageWrapper>
     )
   } else {
     ImageComponentToRender = (
-      <ScImageWrapper withFullWidth={defaultImageProps.withFullWidth} onClick={onClick}>
+      <ScImageWrapper
+        withFullWidth={defaultImageProps.withFullWidth}
+        onClick={onClick}
+      >
         <LinkImageBlock {...linkImageBlockProps}>
           <ResponsiveImageWithBoxShadow {...defaultImageProps} />
         </LinkImageBlock>
@@ -271,7 +303,14 @@ PostItemLayout.propTypes = {
   /* eslint-disable react/require-default-props */
   title: PropTypes.string.isRequired,
   titleColor: PropTypes.string,
-  titleHtmlTag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h4ParentingTitle', 'suggestedTitle']),
+  titleHtmlTag: PropTypes.oneOf([
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h4ParentingTitle',
+    'suggestedTitle',
+  ]),
   titleLines: PropTypes.shape({
     mobileLines: PropTypes.number,
     tabletLines: PropTypes.number,
